@@ -23,7 +23,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       fail-fast: false
-    name: Linux
+    name: Node.js
     steps:
       - name: ➕ Actions - Checkout
         uses: actions/checkout@v4
