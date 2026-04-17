@@ -15,7 +15,7 @@ const isWindows = currentPlatform === 'win32';
 
 export const runtimeSpecs: Record<Runtime, RuntimeSpec> = {
   node: {
-    command: isWindows ? 'npx' : 'poku',
+    command: isWindows ? 'npx.cmd' : 'poku',
     args: isWindows ? ['poku'] : [],
     env: { ...reset.poku, NODE_V8_COVERAGE: undefined },
   },
