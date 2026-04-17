@@ -34,9 +34,9 @@
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .github/workflows/*.yml .",
     "test": "poku",
-    "test:node": "poku -t='node:'",
-    "test:deno": "poku -t='deno:'",
-    "test:bun": "poku -t='bun:'",
+    "test:node": "poku -t=\"node:\"",
+    "test:deno": "poku -t=\"deno:\"",
+    "test:bun": "poku -t=\"bun:\"",
     "update": "pu && npm i && npm update && (npm audit fix || true)",
     "postupdate": "npm run lint:fix"
   },
