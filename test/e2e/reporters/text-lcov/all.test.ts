@@ -1,0 +1,25 @@
+import type { TestCase } from '../../../../src/@types/tests.ts';
+import { test } from 'poku';
+import { fixture } from '../../../__utils__/fixture.ts';
+import { textLcov } from '../../../__utils__/readers/text-lcov.ts';
+import { runtimesFor } from '../../../__utils__/runtime.ts';
+import { snapshot } from '../../../__utils__/snapshot.ts';
+
+for (const runtime of runtimesFor('text-lcov')) {
+  const testCase: TestCase = {
+    reporter: 'text-lcov',
+    runtime,
+    name: 'all',
+    extension: 'txt',
+  };
+
+  await test(`${runtime}: ${testCase.name}`, async () => {
+    const result = await fixture.run(testCase);
+
+    snapshot.match(
+      textLcov.read(result),
+      testCase,
+      'Emits LCOV output to stdout with include, exclude and all:true'
+    );
+  });
+}

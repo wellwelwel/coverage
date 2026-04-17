@@ -1,0 +1,48 @@
+import type { ReporterName, Runtime } from '../../src/@types/reporters.js';
+import type { RuntimeSpec } from '../../src/@types/tests.ts';
+
+const reset = {
+  poku: {
+    POKU_RUNTIME: undefined,
+    POKU_REPORTER: undefined,
+    POKU_TEST_NAME_PATTERN: undefined,
+    POKU_TEST_SKIP_PATTERN: undefined,
+  },
+};
+
+export const runtimeSpecs: Record<Runtime, RuntimeSpec> = {
+  node: {
+    command: 'poku',
+    args: [],
+    env: { ...reset.poku, NODE_V8_COVERAGE: undefined },
+  },
+  deno: {
+    command: 'deno',
+    args: ['run', '-A', 'npm:poku'],
+    env: { ...reset.poku, DENO_COVERAGE_DIR: undefined },
+  },
+  bun: {
+    command: 'bun',
+    args: ['--bun', 'poku'],
+    env: reset.poku,
+  },
+};
+
+export const runtimes: Runtime[] = ['node', 'bun', 'deno'] as const;
+
+const bunSupports = new Set<ReporterName>([
+  'text',
+  'lcov',
+  'lcovonly',
+  'text-lcov',
+  'teamcity',
+  'json-summary',
+  'cobertura',
+  'clover',
+  'none',
+]);
+
+export const runtimesFor = (reporter: ReporterName): Runtime[] =>
+  bunSupports.has(reporter)
+    ? runtimes
+    : runtimes.filter((runtime) => runtime !== 'bun');
