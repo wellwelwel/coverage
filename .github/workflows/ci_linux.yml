@@ -45,7 +45,7 @@ jobs:
         run: npm ci
 
       - name: 🚀 Building
-        run: npm build
+        run: npm run build
 
       - name: 🧪 Testing
         run: npm run test:node
@@ -82,7 +82,7 @@ jobs:
         run: npm ci
 
       - name: 🚀 Building
-        run: npm build
+        run: npm run build
 
       - name: 🧪 Testing
         run: npm run test:bun
@@ -119,7 +119,7 @@ jobs:
         run: npm ci
 
       - name: 🚀 Building
-        run: npm build
+        run: npm run build
 
       - name: 🧪 Testing
         run: npm run test:deno
