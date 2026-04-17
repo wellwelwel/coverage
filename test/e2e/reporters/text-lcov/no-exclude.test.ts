@@ -10,14 +10,14 @@ for (const runtime of runtimesFor('text-lcov')) {
     reporter: 'text-lcov',
     runtime,
     name: 'no-exclude',
-    extension: 'txt',
+    extension: 'json',
   };
 
   await test(`${runtime}: ${testCase.name}`, async () => {
     const result = await fixture.run(testCase);
 
     snapshot.match(
-      textLcov.read(result),
+      await textLcov.read(result),
       testCase,
       'Emits LCOV output to stdout without exclude and all:true'
     );
