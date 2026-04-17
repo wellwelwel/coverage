@@ -11,14 +11,14 @@ for (const runtime of runtimes) {
     reporter: 'lcovonly',
     runtime,
     name: 'all',
-    extension: 'lcov.info',
+    extension: 'json',
   };
 
   await test(`${runtime}: ${testCase.name}`, async () => {
     const result = await fixture.run(testCase);
 
     snapshot.match(
-      lcov.read(result.fixtureRoot),
+      await lcov.read(result.fixtureRoot),
       testCase,
       'Covers all files included and excludes explicit ones'
     );

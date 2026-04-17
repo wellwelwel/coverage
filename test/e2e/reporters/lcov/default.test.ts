@@ -12,7 +12,7 @@ for (const runtime of runtimesFor('lcov')) {
     reporter: 'lcov',
     runtime,
     name: 'default',
-    extension: 'lcov.info',
+    extension: 'json',
   };
 
   await test(`${runtime}: ${testCase.name}`, async () => {
@@ -20,7 +20,7 @@ for (const runtime of runtimesFor('lcov')) {
     const reportDir = `${result.fixtureRoot}/coverage/lcov-report`;
 
     snapshot.match(
-      lcov.read(result.fixtureRoot),
+      await lcov.read(result.fixtureRoot),
       testCase,
       'Emits lcov.info via delegated lcovonly reporter'
     );

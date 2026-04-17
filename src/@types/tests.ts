@@ -2,7 +2,7 @@ import type { ReporterName, Runtime } from './reporters.js';
 
 export type Platform = 'darwin' | 'linux' | 'win32';
 
-export type SnapshotExtension = 'lcov.info' | 'json' | 'xml' | 'html' | 'txt';
+export type SnapshotExtension = 'json' | 'xml' | 'html' | 'txt';
 
 export type FixtureRun = {
   exitCode: number;

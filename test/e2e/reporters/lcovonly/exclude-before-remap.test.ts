@@ -10,12 +10,12 @@ for (const runtime of runtimes) {
     reporter: 'lcovonly',
     runtime,
     name: 'exclude-before-remap',
-    extension: 'lcov.info',
+    extension: 'json',
   };
 
   await test(`${runtime}: ${testCase.name}`, async () => {
     const result = await fixture.run(testCase);
-    const lcovContent = lcov.read(result.fixtureRoot);
+    const lcovContent = await lcov.read(result.fixtureRoot);
 
     snapshot.match(
       lcovContent,
