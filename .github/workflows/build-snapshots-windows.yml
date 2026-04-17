@@ -1,0 +1,44 @@
+name: '🪟 Build Snapshots — Windows'
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: '${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    name: Generate Windows Snapshots
+    steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          check-latest: true
+          node-version: lts/*
+          cache: 'npm'
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🚀 Building
+        run: npm run build
+
+      - name: 🧪 Generating Snapshots
+        shell: bash
+        env:
+          UPDATE_SNAPSHOTS: '1'
+        run: npm run test:node
+
+      - name: 📤 Upload Windows snapshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: snapshots-win32
+          path: test/__snapshots__/e2e/**/node/win32/**
+          retention-days: 14
+          if-no-files-found: error
