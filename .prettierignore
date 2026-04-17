@@ -1,0 +1,11 @@
+/lib
+/ci
+/CHANGELOG.md
+/website
+/test/__snapshots__
+/.nycrc.json
+/benchmark/results
+/benchmark/output.md
+/coverage/
+LICENSE
+/resources/

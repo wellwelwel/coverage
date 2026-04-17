@@ -1,0 +1,91 @@
+{
+  "name": "@pokujs/coverage",
+  "private": false,
+  "version": "0.1.8",
+  "description": "☔️ The world's first coverage tool to generate reports for Node.js, Bun, Deno, and TypeScript at the same time.",
+  "type": "module",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pokujs/coverage.git"
+  },
+  "homepage": "https://poku.io/docs/documentation/helpers/coverage",
+  "bugs": {
+    "url": "https://github.com/pokujs/coverage/issues"
+  },
+  "author": "https://github.com/wellwelwel",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/pokujs/coverage?sponsor=1"
+  },
+  "files": [
+    "lib",
+    "resources"
+  ],
+  "engines": {
+    "node": ">=18.x.x"
+  },
+  "scripts": {
+    "prebuild": "rm -rf lib",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit && tsc -p test --noEmit",
+    "build:snapshots": "UPDATE_SNAPSHOTS=1 npm test",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .github/workflows/*.yml .",
+    "test": "poku",
+    "test:node": "poku -t='node:'",
+    "test:deno": "poku -t='deno:'",
+    "test:bun": "poku -t='bun:'",
+    "update": "pu && npm i && npm update && (npm audit fix || true)",
+    "postupdate": "npm run lint:fix"
+  },
+  "dependencies": {
+    "acorn": "^8.16.0",
+    "jsonc.min": "^1.1.2",
+    "toml.min": "^1.0.0",
+    "yaml.min": "^1.0.0"
+  },
+  "peerDependencies": {
+    "poku": "^4.2.1"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@types/node": "^25.6.0",
+    "packages-update": "^2.0.0",
+    "poku": "^4.2.1",
+    "prettier": "^3.8.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "🐷",
+    "poku",
+    "pokujs",
+    "testing",
+    "plugin",
+    "coverage",
+    "v8",
+    "jsc",
+    "javascriptcore",
+    "lcov",
+    "istanbul",
+    "bun",
+    "deno",
+    "codecov",
+    "codacy",
+    "lcovonly",
+    "text-lcov",
+    "text-summary",
+    "teamcity",
+    "json",
+    "json-summary",
+    "cobertura",
+    "clover",
+    "none",
+    "text"
+  ]
+}

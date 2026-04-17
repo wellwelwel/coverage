@@ -1,0 +1,46 @@
+import type { BranchArmPosition } from './branch-discovery.js';
+
+export type Metric = {
+  total: number | null;
+  hit: number | null;
+};
+
+export type ColorName = 'red' | 'yellow' | 'green' | 'gray' | 'dim' | 'dimGray';
+
+export type UncoveredRange = {
+  start: number;
+  end: number;
+};
+
+export type TruncatedRanges = {
+  visible: UncoveredRange[];
+  truncated: boolean;
+};
+
+export type RowMetrics = {
+  statements: Metric;
+  branches: Metric;
+  functions: Metric;
+  lines: Metric;
+  uncoveredRanges: UncoveredRange[];
+  uncoveredBranchPositions: readonly BranchArmPosition[];
+};
+
+export type Row = {
+  name: string;
+  metrics: RowMetrics | null;
+  absolutePath?: string;
+};
+
+export type Alignment = 'left' | 'right';
+
+export type Column = {
+  header: string;
+  align: Alignment;
+};
+
+export type RenderCell = {
+  text: string;
+  color: ColorName | null;
+  display?: string;
+};
