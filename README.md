@@ -1,7 +1,9 @@
 <div align="center">
 <img height="180" alt="Poku's Logo" src="https://raw.githubusercontent.com/wellwelwel/poku/main/.github/assets/readme/poku.svg">
 
-# @pokujs/coverage (Experimental)
+# @pokujs/coverage
+
+_**Stage: Experimental**_ 🧟
 
 Enjoying **Poku**? [Give him a star to show your support](https://github.com/wellwelwel/poku) ⭐
 
@@ -18,6 +20,8 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 > [!TIP]
 >
 > [**@pokujs/coverage**](https://github.com/pokujs/coverage) supports **JSONC**, **YAML**, and **TOML** config files out of the box, allowing comments in your configuration. You can also use **JavaScript** and **TypeSript** by setting the options directly in the plugin.
+
+> <img src="./.github/assets/sample.png" width="420" />
 
 ---
 
