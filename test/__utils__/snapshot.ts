@@ -1,4 +1,4 @@
-import type { TestCase } from '../../src/@types/tests.ts';
+import type { Platform, TestCase } from '../../src/@types/tests.ts';
 import {
   existsSync,
   mkdirSync,
@@ -8,7 +8,7 @@ import {
   writeFileSync,
 } from 'node:fs';
 import { dirname, posix, relative, sep } from 'node:path';
-import { env } from 'node:process';
+import { platform as currentPlatform, env } from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { strict } from 'poku';
 
@@ -16,11 +16,14 @@ const snapshotsRoot = fileURLToPath(
   new URL('../__snapshots__/e2e/', import.meta.url)
 );
 
+const platformOf = (target: TestCase): Platform =>
+  target.platform ?? (currentPlatform as Platform);
+
 const resolveSnapshotPath = (target: TestCase): string =>
-  `${snapshotsRoot}${target.reporter}/${target.runtime}/${target.name}.${target.extension}`;
+  `${snapshotsRoot}${target.reporter}/${target.runtime}/${platformOf(target)}/${target.name}.${target.extension}`;
 
 const resolveSnapshotTreeRoot = (target: TestCase): string =>
-  `${snapshotsRoot}${target.reporter}/${target.runtime}/${target.name}`;
+  `${snapshotsRoot}${target.reporter}/${target.runtime}/${platformOf(target)}/${target.name}`;
 
 const read = (target: TestCase): string =>
   readFileSync(resolveSnapshotPath(target), 'utf8');
