@@ -48,7 +48,19 @@ jobs:
         run: npm run build
 
       - name: 🧪 Testing
-        run: npm run test:node
+        run: set -o pipefail && npm run test:node 2>&1 | tee test-output.log
+
+      - name: 📤 Upload test output
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-output-linux-node
+          path: |
+            test-output.log
+            test/__fixtures__/e2e/**/coverage/
+          retention-days: 7
+          if-no-files-found: warn
 
   bun:
     runs-on: ubuntu-latest
@@ -85,7 +97,19 @@ jobs:
         run: npm run build
 
       - name: 🧪 Testing
-        run: npm run test:bun
+        run: set -o pipefail && npm run test:bun 2>&1 | tee test-output.log
+
+      - name: 📤 Upload test output
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-output-linux-bun
+          path: |
+            test-output.log
+            test/__fixtures__/e2e/**/coverage/
+          retention-days: 7
+          if-no-files-found: warn
 
   deno:
     runs-on: ubuntu-latest
@@ -122,4 +146,16 @@ jobs:
         run: npm run build
 
       - name: 🧪 Testing
-        run: npm run test:deno
+        run: set -o pipefail && npm run test:deno 2>&1 | tee test-output.log
+
+      - name: 📤 Upload test output
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-output-linux-deno
+          path: |
+            test-output.log
+            test/__fixtures__/e2e/**/coverage/
+          retention-days: 7
+          if-no-files-found: warn
