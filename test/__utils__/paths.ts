@@ -78,9 +78,24 @@ const normalizeTeamcity = (content: string): string => {
   );
 };
 
-const normalizeJsonSummary = (content: string): string => {
-  const parsed = JSON.parse(content.replace(/\r\n/g, '\n'));
-  return JSON.stringify(parsed, null, 2);
+const normalizeJsonSummary = (content: string, fixtureRoot: string): string => {
+  const normalized = content
+    .replace(/\r\n/g, '\n')
+    .split(fixtureRoot)
+    .join('<fixtureRoot>')
+    .replace(
+      /\/[^"]*\/test\/__fixtures__\/e2e\/[^/]+\/[^/]+\/[^/"]+/g,
+      '<fixtureRoot>'
+    );
+
+  const parsed = JSON.parse(normalized) as Record<string, unknown>;
+  const sortedKeys = Object.keys(parsed).sort();
+  const sortedPayload: Record<string, unknown> = Object.create(null);
+
+  for (const sortedKey of sortedKeys)
+    sortedPayload[sortedKey] = parsed[sortedKey];
+
+  return JSON.stringify(sortedPayload, null, 2);
 };
 
 const sortClassesBlocks = (content: string): string =>
@@ -129,6 +144,9 @@ const sortFilesWithinPackages = (content: string): string =>
     }
   );
 
+const FIXTURE_PATH_PATTERN =
+  /\/[^<>"'\s]*\/test\/__fixtures__\/e2e\/[^/<>"'\s]+\/[^/<>"'\s]+\/[^/<>"'\s]+/g;
+
 const normalizeXml = (content: string, fixtureRoot: string): string =>
   sortFilesWithinPackages(
     sortClassesBlocks(
@@ -137,6 +155,7 @@ const normalizeXml = (content: string, fixtureRoot: string): string =>
         .replace(/ (generated|timestamp)="\d+"/g, ' $1="<$1>"')
         .split(fixtureRoot)
         .join('<fixtureRoot>')
+        .replace(FIXTURE_PATH_PATTERN, '<fixtureRoot>')
     )
   );
 
