@@ -11,10 +11,12 @@ const reset = {
   },
 };
 
+const isWindows = currentPlatform === 'win32';
+
 export const runtimeSpecs: Record<Runtime, RuntimeSpec> = {
   node: {
-    command: 'poku',
-    args: [],
+    command: isWindows ? 'npx' : 'poku',
+    args: isWindows ? ['poku'] : [],
     env: { ...reset.poku, NODE_V8_COVERAGE: undefined },
   },
   deno: {
