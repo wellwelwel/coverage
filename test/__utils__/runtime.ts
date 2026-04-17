@@ -11,7 +11,7 @@ const reset = {
   },
 };
 
-const isWindows = currentPlatform === 'win32';
+export const isWindows = currentPlatform === 'win32';
 
 export const runtimeSpecs: Record<Runtime, RuntimeSpec> = {
   node: {

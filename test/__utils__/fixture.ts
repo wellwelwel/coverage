@@ -5,7 +5,7 @@ import type {
 } from '../../src/@types/tests.ts';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { runtimeSpecs } from './runtime.ts';
+import { isWindows, runtimeSpecs } from './runtime.ts';
 
 const fixturesRoot = fileURLToPath(
   new URL('../__fixtures__/e2e/', import.meta.url)
@@ -34,6 +34,7 @@ const runBinary = (
         ...spec.env,
         ...extraEnv,
       },
+      shell: isWindows,
     });
 
     let stdout = '';
