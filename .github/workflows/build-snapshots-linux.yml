@@ -1,0 +1,49 @@
+name: '🐧 Build Snapshots — Linux'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    name: Generate Linux Snapshots
+    steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          check-latest: true
+          node-version: lts/*
+          cache: 'npm'
+
+      - name: ➕ Actions - Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: ➕ Actions - Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x.x
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🚀 Building
+        run: npm run build
+
+      - name: 🧪 Generating Snapshots
+        env:
+          UPDATE_SNAPSHOTS: '1'
+        run: npm test
+
+      - name: 📤 Upload Linux snapshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: snapshots-linux
+          path: test/__snapshots__/e2e/**/linux/**
+          retention-days: 14
+          if-no-files-found: error
