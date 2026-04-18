@@ -1,13 +1,13 @@
-name: '🪟 Build Snapshots — Windows'
+name: '🍎 Build Snapshots — macOS'
 
 on:
   workflow_dispatch:
 
 jobs:
-  windows:
-    runs-on: windows-latest
+  macos:
+    runs-on: macos-latest
     timeout-minutes: 20
-    name: Generate Windows Snapshots
+    name: Generate macOS Snapshots
     steps:
       - name: ➕ Actions - Checkout
         uses: actions/checkout@v4
@@ -19,6 +19,16 @@ jobs:
           node-version: lts/*
           cache: 'npm'
 
+      - name: ➕ Actions - Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: ➕ Actions - Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x.x
+
       - name: 📦 Installing Dependencies
         run: npm ci
 
@@ -26,15 +36,14 @@ jobs:
         run: npm run build
 
       - name: 🧪 Generating Snapshots
-        shell: bash
         env:
           UPDATE_SNAPSHOTS: '1'
-        run: npm run test:node
+        run: npm test
 
-      - name: 📤 Upload Windows snapshots
+      - name: 📤 Upload macOS snapshots
         uses: actions/upload-artifact@v7
         with:
-          name: snapshots-win32
-          path: test/__snapshots__/e2e/**/node/win32/**
+          name: snapshots-darwin
+          path: test/__snapshots__/e2e/**/darwin/**
           retention-days: 14
           if-no-files-found: error
