@@ -35,12 +35,18 @@ const normalizeText = (content: string, fixtureRoot?: string): string => {
 
   if (fixtureRoot === undefined) return extracted;
 
+  const fixtureRootPosix = toPosix(fixtureRoot);
   const encodedFixtureRoot = encodeURIComponent(fixtureRoot);
+  const encodedFixtureRootPosix = encodeURIComponent(fixtureRootPosix);
 
   return extracted
     .split(fixtureRoot)
     .join('<fixtureRoot>')
+    .split(fixtureRootPosix)
+    .join('<fixtureRoot>')
     .split(encodedFixtureRoot)
+    .join('<fixtureRoot>')
+    .split(encodedFixtureRootPosix)
     .join('<fixtureRoot>');
 };
 
