@@ -49,8 +49,10 @@ export const lineCoverage = (
     const entry = fileCoverage.statementMap[statementKey];
     const lineNumber = entry.start.line;
     const hitCount = fileCoverage.s[statementKey] ?? 0;
+    const previous = perLine.get(lineNumber);
 
-    perLine.set(lineNumber, hitCount);
+    if (previous === undefined || previous < hitCount)
+      perLine.set(lineNumber, hitCount);
   }
 
   return perLine;
