@@ -42,7 +42,7 @@
           "line": [
             {
               "@_num": "1",
-              "@_count": "2",
+              "@_count": "1",
               "@_type": "cond",
               "@_truecount": "1",
               "@_falsecount": "0"

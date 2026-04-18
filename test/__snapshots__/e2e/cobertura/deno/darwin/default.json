@@ -52,7 +52,7 @@
                 "line": [
                   {
                     "@_number": "1",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -68,12 +68,12 @@
                   },
                   {
                     "@_number": "4",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "5",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -126,12 +126,12 @@
                   },
                   {
                     "@_number": "15",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "16",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -294,17 +294,17 @@
                 "line": [
                   {
                     "@_number": "1",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "2",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "3",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -321,12 +321,12 @@
                   },
                   {
                     "@_number": "6",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "7",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -343,12 +343,12 @@
                   },
                   {
                     "@_number": "10",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "11",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -365,12 +365,12 @@
                   },
                   {
                     "@_number": "14",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "15",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -387,12 +387,12 @@
                   },
                   {
                     "@_number": "18",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "19",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -444,12 +444,12 @@
                   },
                   {
                     "@_number": "28",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "29",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -488,12 +488,12 @@
                   },
                   {
                     "@_number": "36",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "37",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -510,12 +510,12 @@
                   },
                   {
                     "@_number": "40",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "41",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -532,12 +532,12 @@
                   },
                   {
                     "@_number": "44",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "45",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -559,12 +559,12 @@
                   },
                   {
                     "@_number": "49",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "50",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -586,12 +586,12 @@
                   },
                   {
                     "@_number": "54",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "55",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -613,12 +613,12 @@
                   },
                   {
                     "@_number": "59",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "60",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -713,7 +713,7 @@
                 "line": [
                   {
                     "@_number": "1",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -729,12 +729,12 @@
                   },
                   {
                     "@_number": "4",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "5",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -750,12 +750,12 @@
                   },
                   {
                     "@_number": "8",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "9",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -771,12 +771,12 @@
                   },
                   {
                     "@_number": "12",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "13",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -877,7 +877,7 @@
                 "line": [
                   {
                     "@_number": "1",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -894,12 +894,12 @@
                   },
                   {
                     "@_number": "4",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "5",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -916,12 +916,12 @@
                   },
                   {
                     "@_number": "8",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "9",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -937,12 +937,12 @@
                   },
                   {
                     "@_number": "12",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "13",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -959,12 +959,12 @@
                   },
                   {
                     "@_number": "16",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "17",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -1027,7 +1027,7 @@
                 "line": [
                   {
                     "@_number": "1",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -1063,12 +1063,12 @@
                   },
                   {
                     "@_number": "8",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "9",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "true",
                     "@_condition-coverage": "100% (1/1)"
                   },
@@ -1084,12 +1084,12 @@
                   },
                   {
                     "@_number": "12",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {
                     "@_number": "13",
-                    "@_hits": "2",
+                    "@_hits": "1",
                     "@_branch": "false"
                   },
                   {

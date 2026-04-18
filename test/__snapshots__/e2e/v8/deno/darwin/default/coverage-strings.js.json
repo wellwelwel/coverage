@@ -12,7 +12,7 @@
               "count": "<count>"
             }
           ],
-          "isBlockCoverage": false
+          "isBlockCoverage": true
         },
         {
           "functionName": "capitalize",
