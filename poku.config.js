@@ -51,6 +51,7 @@ const clearRuntimeCaches = async () => {
 
 export default defineConfig({
   include: ['test/e2e'],
+  reporter: 'compact',
   timeout: 30000,
   plugins: [
     {
@@ -59,8 +60,10 @@ export default defineConfig({
 
         console.log('› Deleting previous coverage reports...');
         await clean();
+        console.log('');
       },
       teardown: () => {
+        console.log('');
         console.log('› Coverage reports are preserved for debugging purposes.');
       },
     },
