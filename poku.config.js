@@ -1,7 +1,9 @@
 // @ts-check
 
 import { readdir, rm } from 'node:fs/promises';
+import { homedir, platform } from 'node:os';
 import { join } from 'node:path';
+import { env } from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'poku';
 import { coverage } from './lib/index.js';
@@ -28,12 +30,33 @@ const clean = async (
   );
 };
 
+const denoCacheDir = () => {
+  switch (platform()) {
+    case 'darwin':
+      return join(homedir(), 'Library', 'Caches', 'deno');
+    case 'win32':
+      return join(
+        env.LOCALAPPDATA ?? join(homedir(), 'AppData', 'Local'),
+        'deno'
+      );
+    default:
+      return join(homedir(), '.cache', 'deno');
+  }
+};
+
+const clearRuntimeCaches = async () => {
+  console.log('› Clearing Deno cache for snapshot regeneration...');
+  await rm(denoCacheDir(), { recursive: true, force: true });
+};
+
 export default defineConfig({
   include: ['test/e2e'],
   timeout: 30000,
   plugins: [
     {
       setup: async () => {
+        await clearRuntimeCaches();
+
         console.log('› Deleting previous coverage reports...');
         await clean();
       },
