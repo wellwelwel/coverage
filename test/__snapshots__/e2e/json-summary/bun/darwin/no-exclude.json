@@ -1,30 +1,4 @@
 {
-  "total": {
-    "statements": {
-      "total": 111,
-      "covered": 76,
-      "skipped": 0,
-      "pct": 68.47
-    },
-    "branches": {
-      "total": 0,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    },
-    "functions": {
-      "total": 28,
-      "covered": 27,
-      "skipped": 0,
-      "pct": 96.43
-    },
-    "lines": {
-      "total": 111,
-      "covered": 76,
-      "skipped": 0,
-      "pct": 68.47
-    }
-  },
   "src/collections.js": {
     "statements": {
       "total": 13,
@@ -51,6 +25,84 @@
       "pct": 92.31
     }
   },
+  "src/dummy.js": {
+    "statements": {
+      "total": 12,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "lines": {
+      "total": 12,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "src/helpers/format.js": {
+    "statements": {
+      "total": 16,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "lines": {
+      "total": 16,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "src/index.js": {
+    "statements": {
+      "total": 3,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "lines": {
+      "total": 3,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
   "src/logic.js": {
     "statements": {
       "total": 37,
@@ -73,6 +125,32 @@
     "lines": {
       "total": 37,
       "covered": 37,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/math.js": {
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "lines": {
+      "total": 11,
+      "covered": 11,
       "skipped": 0,
       "pct": 100
     }
@@ -129,12 +207,12 @@
       "pct": 66.67
     }
   },
-  "src/math.js": {
+  "total": {
     "statements": {
-      "total": 11,
-      "covered": 11,
+      "total": 111,
+      "covered": 76,
       "skipped": 0,
-      "pct": 100
+      "pct": 68.47
     },
     "branches": {
       "total": 0,
@@ -143,94 +221,16 @@
       "pct": 0
     },
     "functions": {
-      "total": 4,
-      "covered": 4,
+      "total": 28,
+      "covered": 27,
       "skipped": 0,
-      "pct": 100
+      "pct": 96.43
     },
     "lines": {
-      "total": 11,
-      "covered": 11,
+      "total": 111,
+      "covered": 76,
       "skipped": 0,
-      "pct": 100
-    }
-  },
-  "src/index.js": {
-    "statements": {
-      "total": 3,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    },
-    "branches": {
-      "total": 0,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    },
-    "functions": {
-      "total": 0,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 100
-    },
-    "lines": {
-      "total": 3,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    }
-  },
-  "src/dummy.js": {
-    "statements": {
-      "total": 12,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    },
-    "branches": {
-      "total": 0,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    },
-    "functions": {
-      "total": 0,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 100
-    },
-    "lines": {
-      "total": 12,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    }
-  },
-  "src/helpers/format.js": {
-    "statements": {
-      "total": 16,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    },
-    "branches": {
-      "total": 0,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
-    },
-    "functions": {
-      "total": 0,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 100
-    },
-    "lines": {
-      "total": 16,
-      "covered": 0,
-      "skipped": 0,
-      "pct": 0
+      "pct": 68.47
     }
   }
 }

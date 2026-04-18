@@ -1,5 +1,5 @@
 {
-  "total": {
+  "src/survivor.js": {
     "statements": {
       "total": 2,
       "covered": 2,
@@ -25,7 +25,7 @@
       "pct": 100
     }
   },
-  "src/survivor.js": {
+  "total": {
     "statements": {
       "total": 2,
       "covered": 2,

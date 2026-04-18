@@ -46,7 +46,7 @@ const bunSupports = new Set<ReporterName>([
 ]);
 
 const runtimesByPlatform: Record<Platform, readonly Runtime[]> = {
-  darwin: ['node'],
+  darwin: ['node', 'bun', 'deno'],
   linux: ['node', 'bun', 'deno'],
   win32: ['node'],
 };
