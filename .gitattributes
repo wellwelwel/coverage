@@ -2,3 +2,5 @@ test/__fixtures__/** linguist-vendored
 test/__snapshots__/** linguist-vendored
 benchmark/** linguist-vendored
 src/bin/** linguist-language=TypeScript
+
+test/__snapshots__/** eol=lf
