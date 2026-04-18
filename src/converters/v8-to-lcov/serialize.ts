@@ -1,5 +1,5 @@
 import type { FileAggregation } from '../../@types/v8.js';
-import { relativize } from '../../utils/paths.js';
+import { relativize, toPosix } from '../../utils/paths.js';
 
 export const serializeFileRecord = (
   file: string,
@@ -9,7 +9,7 @@ export const serializeFileRecord = (
   const record: string[] = [];
 
   record.push('TN:');
-  record.push(`SF:${relativize(file, cwd)}`);
+  record.push(`SF:${toPosix(relativize(file, cwd))}`);
 
   const namedFunctions = Array.from(aggregation.functions.values())
     .filter((entry) => entry.name !== '')

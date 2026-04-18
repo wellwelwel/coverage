@@ -4,7 +4,7 @@ import type { ReporterContext, Runtime } from './@types/reporters.js';
 import { readdirSync, readFileSync } from 'node:fs';
 import { isAbsolute, join, resolve } from 'node:path';
 import { fileFilter } from './file-filter.js';
-import { relativize } from './utils/paths.js';
+import { relativize, toPosix } from './utils/paths.js';
 
 const SOURCE_EXTENSIONS: readonly string[] = [
   '.js',
@@ -99,7 +99,7 @@ const buildZeroLcovRecord = (
 ): string => {
   const lines: string[] = [
     'TN:',
-    `SF:${relativize(absolutePath, cwd)}`,
+    `SF:${toPosix(relativize(absolutePath, cwd))}`,
     'FNF:0',
     'FNH:0',
   ];
