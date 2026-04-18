@@ -1,6 +1,6 @@
 {
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\collections.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\collections.js",
+  "<fixtureRoot>/src/collections.js": {
+    "path": "<fixtureRoot>/src/collections.js",
     "statementMap": {
       "0": {
         "start": {
@@ -461,8 +461,8 @@
       ]
     }
   },
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\helpers\\format.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\helpers\\format.js",
+  "<fixtureRoot>/src/helpers/format.js": {
+    "path": "<fixtureRoot>/src/helpers/format.js",
     "all": true,
     "statementMap": {
       "0": {
@@ -649,8 +649,8 @@
     "branchMap": {},
     "b": {}
   },
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\index.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\index.js",
+  "<fixtureRoot>/src/index.js": {
+    "path": "<fixtureRoot>/src/index.js",
     "all": true,
     "statementMap": {
       "0": {
@@ -694,8 +694,8 @@
     "branchMap": {},
     "b": {}
   },
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\logic.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\logic.js",
+  "<fixtureRoot>/src/logic.js": {
+    "path": "<fixtureRoot>/src/logic.js",
     "statementMap": {
       "0": {
         "start": {
@@ -3040,8 +3040,8 @@
       ]
     }
   },
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\math.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\math.js",
+  "<fixtureRoot>/src/math.js": {
+    "path": "<fixtureRoot>/src/math.js",
     "statementMap": {
       "0": {
         "start": {
@@ -3498,8 +3498,8 @@
       ]
     }
   },
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\partial.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\partial.js",
+  "<fixtureRoot>/src/partial.js": {
+    "path": "<fixtureRoot>/src/partial.js",
     "statementMap": {
       "0": {
         "start": {
@@ -4137,8 +4137,8 @@
       ]
     }
   },
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\strings.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\all\\src\\strings.js",
+  "<fixtureRoot>/src/strings.js": {
+    "path": "<fixtureRoot>/src/strings.js",
     "statementMap": {
       "0": {
         "start": {

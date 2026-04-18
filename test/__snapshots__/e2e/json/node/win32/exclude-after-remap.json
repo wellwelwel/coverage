@@ -1,6 +1,6 @@
 {
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\exclude-after-remap\\src\\original.ts": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\exclude-after-remap\\src\\original.ts",
+  "<fixtureRoot>/src/original.ts": {
+    "path": "<fixtureRoot>/src/original.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -199,8 +199,8 @@
       ]
     }
   },
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\exclude-after-remap\\src\\survivor.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\exclude-after-remap\\src\\survivor.js",
+  "<fixtureRoot>/src/survivor.js": {
+    "path": "<fixtureRoot>/src/survivor.js",
     "statementMap": {
       "0": {
         "start": {

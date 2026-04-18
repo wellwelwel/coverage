@@ -1,6 +1,6 @@
 {
-  "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\exclude-before-remap\\src\\survivor.js": {
-    "path": "D:\\a\\coverage\\coverage\\test\\__fixtures__\\e2e\\json\\node\\exclude-before-remap\\src\\survivor.js",
+  "<fixtureRoot>/src/survivor.js": {
+    "path": "<fixtureRoot>/src/survivor.js",
     "statementMap": {
       "0": {
         "start": {
