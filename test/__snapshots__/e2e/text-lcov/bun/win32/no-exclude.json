@@ -1,78 +1,6 @@
 [
   {
     "lines": {
-      "found": 13,
-      "hit": 12,
-      "details": [
-        {
-          "line": 1,
-          "hit": 14
-        },
-        {
-          "line": 2,
-          "hit": 32
-        },
-        {
-          "line": 5,
-          "hit": 20
-        },
-        {
-          "line": 6,
-          "hit": 14
-        },
-        {
-          "line": 7,
-          "hit": 0
-        },
-        {
-          "line": 8,
-          "hit": 2
-        },
-        {
-          "line": 9,
-          "hit": 20
-        },
-        {
-          "line": 10,
-          "hit": 46
-        },
-        {
-          "line": 11,
-          "hit": 38
-        },
-        {
-          "line": 12,
-          "hit": 2
-        },
-        {
-          "line": 13,
-          "hit": 14
-        },
-        {
-          "line": 16,
-          "hit": 14
-        },
-        {
-          "line": 17,
-          "hit": 39
-        }
-      ]
-    },
-    "functions": {
-      "hit": 4,
-      "found": 4,
-      "details": []
-    },
-    "branches": {
-      "hit": 0,
-      "found": 0,
-      "details": []
-    },
-    "title": "",
-    "file": "src\\collections.js"
-  },
-  {
-    "lines": {
       "found": 12,
       "hit": 0,
       "details": [
@@ -137,7 +65,7 @@
       "details": []
     },
     "title": "",
-    "file": "src\\dummy.js"
+    "file": "src/dummy.js"
   },
   {
     "lines": {
@@ -221,7 +149,7 @@
       "details": []
     },
     "title": "",
-    "file": "src\\helpers\\format.js"
+    "file": "src/helpers/format.js"
   },
   {
     "lines": {
@@ -253,7 +181,79 @@
       "details": []
     },
     "title": "",
-    "file": "src\\index.js"
+    "file": "src/index.js"
+  },
+  {
+    "lines": {
+      "found": 13,
+      "hit": 12,
+      "details": [
+        {
+          "line": 1,
+          "hit": 14
+        },
+        {
+          "line": 2,
+          "hit": 32
+        },
+        {
+          "line": 5,
+          "hit": 20
+        },
+        {
+          "line": 6,
+          "hit": 14
+        },
+        {
+          "line": 7,
+          "hit": 0
+        },
+        {
+          "line": 8,
+          "hit": 2
+        },
+        {
+          "line": 9,
+          "hit": 20
+        },
+        {
+          "line": 10,
+          "hit": 46
+        },
+        {
+          "line": 11,
+          "hit": 38
+        },
+        {
+          "line": 12,
+          "hit": 2
+        },
+        {
+          "line": 13,
+          "hit": 14
+        },
+        {
+          "line": 16,
+          "hit": 14
+        },
+        {
+          "line": 17,
+          "hit": 39
+        }
+      ]
+    },
+    "functions": {
+      "hit": 4,
+      "found": 4,
+      "details": []
+    },
+    "branches": {
+      "hit": 0,
+      "found": 0,
+      "details": []
+    },
+    "title": "",
+    "file": "src\\collections.js"
   },
   {
     "lines": {

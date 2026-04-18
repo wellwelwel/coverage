@@ -128,7 +128,7 @@
       ]
     },
     "title": "",
-    "file": "src\\collections.js"
+    "file": "src/collections.js"
   },
   {
     "lines": {
@@ -212,7 +212,7 @@
       "details": []
     },
     "title": "",
-    "file": "src\\helpers\\format.js"
+    "file": "src/helpers/format.js"
   },
   {
     "lines": {
@@ -244,7 +244,7 @@
       "details": []
     },
     "title": "",
-    "file": "src\\index.js"
+    "file": "src/index.js"
   },
   {
     "lines": {
@@ -882,7 +882,7 @@
       ]
     },
     "title": "",
-    "file": "src\\logic.js"
+    "file": "src/logic.js"
   },
   {
     "lines": {
@@ -1012,7 +1012,7 @@
       ]
     },
     "title": "",
-    "file": "src\\math.js"
+    "file": "src/math.js"
   },
   {
     "lines": {
@@ -1199,7 +1199,7 @@
       ]
     },
     "title": "",
-    "file": "src\\partial.js"
+    "file": "src/partial.js"
   },
   {
     "lines": {
@@ -1303,6 +1303,6 @@
       "details": []
     },
     "title": "",
-    "file": "src\\strings.js"
+    "file": "src/strings.js"
   }
 ]

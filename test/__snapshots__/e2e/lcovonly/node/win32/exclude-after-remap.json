@@ -60,7 +60,7 @@
       "details": []
     },
     "title": "",
-    "file": "src\\original.ts"
+    "file": "src/original.ts"
   },
   {
     "lines": {
@@ -102,6 +102,6 @@
       "details": []
     },
     "title": "",
-    "file": "src\\survivor.js"
+    "file": "src/survivor.js"
   }
 ]
