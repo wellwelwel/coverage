@@ -23,7 +23,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       fail-fast: false
-    name: Windows
+    name: Node.js
     steps:
       - name: ➕ Actions - Checkout
         uses: actions/checkout@v4
@@ -51,6 +51,94 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: test-output-windows-node
+          path: |
+            test-output.log
+            test/__fixtures__/e2e/**/coverage/
+          retention-days: 7
+          if-no-files-found: warn
+
+  bun:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+    name: Bun
+    steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          check-latest: true
+          node-version: lts/*
+          cache: 'npm'
+
+      - name: ➕ Actions - Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🚀 Building
+        run: npm run build
+
+      - name: 🧪 Testing
+        shell: bash
+        run: set -o pipefail && npm run test:bun 2>&1 | tee test-output.log
+
+      - name: 📤 Upload test output
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-output-windows-bun
+          path: |
+            test-output.log
+            test/__fixtures__/e2e/**/coverage/
+          retention-days: 7
+          if-no-files-found: warn
+
+  deno:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+    name: Deno
+    steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          check-latest: true
+          node-version: lts/*
+          cache: 'npm'
+
+      - name: ➕ Actions - Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x.x
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🚀 Building
+        run: npm run build
+
+      - name: 🧪 Testing
+        shell: bash
+        run: set -o pipefail && npm run test:deno 2>&1 | tee test-output.log
+
+      - name: 📤 Upload test output
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-output-windows-deno
           path: |
             test-output.log
             test/__fixtures__/e2e/**/coverage/
