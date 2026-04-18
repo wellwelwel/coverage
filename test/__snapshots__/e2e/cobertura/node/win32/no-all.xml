@@ -2,7 +2,7 @@
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 <coverage lines-valid="137" lines-covered="132" line-rate="0.9635" branches-valid="68" branches-covered="62" branch-rate="0.9118" timestamp="<timestamp>" complexity="0" version="0.1">
   <sources>
-    <source>D:\a\coverage\coverage\test\__fixtures__\e2e\cobertura\node\no-all</source>
+    <source><fixtureRoot></source>
   </sources>
   <packages>
     <package name="src" line-rate="0.9635" branch-rate="0.9118">

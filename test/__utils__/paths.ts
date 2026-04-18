@@ -160,17 +160,55 @@ const normalizeXml = (content: string, fixtureRoot: string): string =>
     )
   );
 
-const normalizeJson = (content: string, fixtureRoot: string): string => {
-  const normalized = toPosix(content.replace(/\r\n/g, '\n'))
-    .split(toPosix(fixtureRoot))
-    .join('<fixtureRoot>');
+const normalizeStringWithFixtureRoot = (
+  value: string,
+  fixtureRootPosix: string
+): string => toPosix(value).split(fixtureRootPosix).join('<fixtureRoot>');
 
-  const parsed = JSON.parse(normalized) as Record<string, unknown>;
-  const sortedKeys = Object.keys(parsed).sort();
+const normalizeJsonValue = (
+  value: unknown,
+  fixtureRootPosix: string
+): unknown => {
+  if (typeof value === 'string')
+    return normalizeStringWithFixtureRoot(value, fixtureRootPosix);
+
+  if (Array.isArray(value))
+    return value.map((item) => normalizeJsonValue(item, fixtureRootPosix));
+
+  if (value !== null && typeof value === 'object') {
+    const result: Record<string, unknown> = Object.create(null);
+    const source = value as Record<string, unknown>;
+
+    for (const key of Object.keys(source)) {
+      const normalizedKey = normalizeStringWithFixtureRoot(
+        key,
+        fixtureRootPosix
+      );
+      result[normalizedKey] = normalizeJsonValue(source[key], fixtureRootPosix);
+    }
+
+    return result;
+  }
+
+  return value;
+};
+
+const normalizeJson = (content: string, fixtureRoot: string): string => {
+  const parsed = JSON.parse(content.replace(/\r\n/g, '\n')) as Record<
+    string,
+    unknown
+  >;
+  const fixtureRootPosix = toPosix(fixtureRoot);
   const sortedPayload: Record<string, unknown> = Object.create(null);
 
-  for (const sortedKey of sortedKeys)
-    sortedPayload[sortedKey] = parsed[sortedKey];
+  for (const key of Object.keys(parsed).sort()) {
+    const normalizedKey = normalizeStringWithFixtureRoot(key, fixtureRootPosix);
+
+    sortedPayload[normalizedKey] = normalizeJsonValue(
+      parsed[key],
+      fixtureRootPosix
+    );
+  }
 
   return JSON.stringify(sortedPayload, null, 2);
 };

@@ -2,7 +2,7 @@
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 <coverage lines-valid="3" lines-covered="3" line-rate="1" branches-valid="1" branches-covered="1" branch-rate="1" timestamp="<timestamp>" complexity="0" version="0.1">
   <sources>
-    <source>D:\a\coverage\coverage\test\__fixtures__\e2e\cobertura\node\exclude-before-remap</source>
+    <source><fixtureRoot></source>
   </sources>
   <packages>
     <package name="src" line-rate="1" branch-rate="1">
