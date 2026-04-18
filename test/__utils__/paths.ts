@@ -1,3 +1,5 @@
+const toPosix = (value: string): string => value.replace(/\\/g, '/');
+
 const normalizeLcov = (content: string, fixtureRoot: string): string => {
   const normalizedEndings = content.replace(/\r\n/g, '\n');
   const prefix = `SF:${fixtureRoot}/`;
@@ -150,19 +152,17 @@ const FIXTURE_PATH_PATTERN =
 const normalizeXml = (content: string, fixtureRoot: string): string =>
   sortFilesWithinPackages(
     sortClassesBlocks(
-      content
-        .replace(/\r\n/g, '\n')
+      toPosix(content.replace(/\r\n/g, '\n'))
         .replace(/ (generated|timestamp)="\d+"/g, ' $1="<$1>"')
-        .split(fixtureRoot)
+        .split(toPosix(fixtureRoot))
         .join('<fixtureRoot>')
         .replace(FIXTURE_PATH_PATTERN, '<fixtureRoot>')
     )
   );
 
 const normalizeJson = (content: string, fixtureRoot: string): string => {
-  const normalized = content
-    .replace(/\r\n/g, '\n')
-    .split(fixtureRoot)
+  const normalized = toPosix(content.replace(/\r\n/g, '\n'))
+    .split(toPosix(fixtureRoot))
     .join('<fixtureRoot>');
 
   const parsed = JSON.parse(normalized) as Record<string, unknown>;
