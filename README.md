@@ -23,6 +23,10 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 > <img src="./.github/assets/sample.png" width="420" />
 
+> [!IMPORTANT]
+>
+> While **@pokujs/coverage** is in the experimental stage (`0.x.x`), **any release may introduce breaking changes** (including patch versions). Pin the exact version in your `package.json` if you need stability.
+
 ---
 
 ## Quickstart
