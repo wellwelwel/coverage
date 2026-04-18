@@ -10,7 +10,7 @@ for (const runtime of runtimesFor('cobertura')) {
     reporter: 'cobertura',
     runtime,
     name: 'exclude-after-remap',
-    extension: 'xml',
+    extension: 'json',
   };
 
   await test(`${runtime}: ${testCase.name}`, async () => {

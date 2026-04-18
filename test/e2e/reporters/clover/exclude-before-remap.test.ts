@@ -10,7 +10,7 @@ for (const runtime of runtimesFor('clover')) {
     reporter: 'clover',
     runtime,
     name: 'exclude-before-remap',
-    extension: 'xml',
+    extension: 'json',
   };
 
   await test(`${runtime}: ${testCase.name}`, async () => {

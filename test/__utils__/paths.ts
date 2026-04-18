@@ -106,66 +106,6 @@ const normalizeJsonSummary = (content: string, fixtureRoot: string): string => {
   return JSON.stringify(sortedPayload, null, 2);
 };
 
-const sortClassesBlocks = (content: string): string =>
-  content.replace(
-    /([ \t]*)<classes>\n([\s\S]*?)\n([ \t]*)<\/classes>/g,
-    (_match, openingIndent: string, body: string, closingIndent: string) => {
-      const classBlocks = body.match(/[ \t]*<class [\s\S]*?<\/class>(?=\n|$)/g);
-      if (classBlocks === null) return _match;
-
-      const sortedBlocks = [...classBlocks].sort((left, right) => {
-        const leftFilename = left.match(/filename="([^"]+)"/)?.[1] ?? '';
-        const rightFilename = right.match(/filename="([^"]+)"/)?.[1] ?? '';
-
-        return leftFilename.localeCompare(rightFilename);
-      });
-
-      return `${openingIndent}<classes>\n${sortedBlocks.join('\n')}\n${closingIndent}</classes>`;
-    }
-  );
-
-const sortFilesWithinPackages = (content: string): string =>
-  content.replace(
-    /([ \t]*)<package ([^>]*)>\n([\s\S]*?)\n([ \t]*)<\/package>/g,
-    (
-      match,
-      openingIndent: string,
-      packageAttributes: string,
-      body: string,
-      closingIndent: string
-    ) => {
-      const fileBlocks = body.match(/[ \t]*<file [\s\S]*?<\/file>(?=\n|$)/g);
-      if (fileBlocks === null) return match;
-
-      const sortedBlocks = [...fileBlocks].sort((left, right) => {
-        const leftPath = left.match(/path="([^"]+)"/)?.[1] ?? '';
-        const rightPath = right.match(/path="([^"]+)"/)?.[1] ?? '';
-
-        return leftPath.localeCompare(rightPath);
-      });
-
-      const bodyWithoutFiles = body
-        .replace(/[ \t]*<file [\s\S]*?<\/file>(?:\n|(?=$))/g, '')
-        .replace(/\n+$/, '');
-
-      return `${openingIndent}<package ${packageAttributes}>\n${bodyWithoutFiles}\n${sortedBlocks.join('\n')}\n${closingIndent}</package>`;
-    }
-  );
-
-const FIXTURE_PATH_PATTERN =
-  /\/[^<>"'\s]*\/test\/__fixtures__\/e2e\/[^/<>"'\s]+\/[^/<>"'\s]+\/[^/<>"'\s]+/g;
-
-const normalizeXml = (content: string, fixtureRoot: string): string =>
-  sortFilesWithinPackages(
-    sortClassesBlocks(
-      toPosix(content.replace(/\r\n/g, '\n'))
-        .replace(/ (generated|timestamp)="\d+"/g, ' $1="<$1>"')
-        .split(toPosix(fixtureRoot))
-        .join('<fixtureRoot>')
-        .replace(FIXTURE_PATH_PATTERN, '<fixtureRoot>')
-    )
-  );
-
 const normalizeStringWithFixtureRoot = (
   value: string,
   fixtureRootPosix: string
@@ -311,6 +251,5 @@ export const paths = {
   normalizeTeamcity,
   normalizeJsonSummary,
   normalizeJson,
-  normalizeXml,
   normalizeV8,
 } as const;

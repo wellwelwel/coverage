@@ -1,11 +1,14 @@
 import { readFileSync } from 'node:fs';
-import { paths } from '../paths.ts';
+import { xmlShared } from './shared/xml.ts';
 
 const raw = (fixtureRoot: string, filename: string): string =>
   readFileSync(`${fixtureRoot}/coverage/${filename}`, 'utf8');
 
-const read = (fixtureRoot: string, filename: string): string =>
-  paths.normalizeXml(raw(fixtureRoot, filename), fixtureRoot);
+const read = (fixtureRoot: string, filename: string): string => {
+  const parsed = xmlShared.parse(raw(fixtureRoot, filename));
+
+  return xmlShared.formatParsed(parsed, fixtureRoot);
+};
 
 export const xml = {
   read,
