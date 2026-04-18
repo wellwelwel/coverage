@@ -1,6 +1,6 @@
 import type { TestCase } from '../../../../src/@types/tests.ts';
 import { isAbsolute } from 'node:path';
-import { strict as assert, test } from 'poku';
+import { strict, test } from 'poku';
 import { fixture } from '../../../__utils__/fixture.ts';
 import { lcov } from '../../../__utils__/readers/lcov.ts';
 import { runtimes } from '../../../__utils__/runtime.ts';
@@ -28,7 +28,7 @@ for (const runtime of runtimes) {
       .split('\n')
       .filter((rawLine) => rawLine.startsWith('SF:'));
 
-    assert.ok(
+    strict.ok(
       sourceFileLines.length > 0,
       `lcov.info should contain at least one SF`
     );
@@ -36,7 +36,7 @@ for (const runtime of runtimes) {
     for (const sourceFileLine of sourceFileLines) {
       const sourcePath = sourceFileLine.slice(3);
 
-      assert.ok(
+      strict.ok(
         !isAbsolute(sourcePath),
         `SF path should be relative to cwd: "${sourceFileLine}"`
       );
