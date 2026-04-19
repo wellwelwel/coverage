@@ -9,6 +9,7 @@ import type { ResolvedFileFilter } from '../../@types/file-filter.js';
 import type {
   BranchCounts,
   BranchMap,
+  BranchMapEntry,
   CovBranch,
   CoverageMap,
   CovFunction,
@@ -16,9 +17,12 @@ import type {
   CovSource,
   FileCoverage,
   FnMap,
+  FnMapEntry,
   FunctionCounts,
+  Range,
   StatementCounts,
   StatementMap,
+  StatementMapEntry,
 } from '../../@types/istanbul.js';
 import type { SourceMapInput } from '../../@types/source-map.js';
 import type {
@@ -191,28 +195,117 @@ const buildFileCoverage = (
   };
 };
 
+const rangeKey = (range: Range): string =>
+  `${range.start.line}:${range.start.column}-${range.end.line}:${range.end.column}`;
+
+const indexByRange = <MetaEntry>(
+  map: Record<string, MetaEntry>,
+  locate: (entry: MetaEntry) => Range
+): Map<string, string> => {
+  const byRange = new Map<string, string>();
+  for (const entryKey of Object.keys(map))
+    byRange.set(rangeKey(locate(map[entryKey])), entryKey);
+  return byRange;
+};
+
+const nextNumericKey = (map: Record<string, unknown>): string => {
+  let nextIndex = 0;
+  for (const entryKey of Object.keys(map)) {
+    const parsed = Number.parseInt(entryKey, 10);
+    if (!Number.isNaN(parsed) && parsed >= nextIndex) nextIndex = parsed + 1;
+  }
+  return String(nextIndex);
+};
+
+const mergeCountsByPosition = <MetaEntry>(
+  targetMap: Record<string, MetaEntry>,
+  targetCounts: Record<string, number>,
+  incomingMap: Record<string, MetaEntry>,
+  incomingCounts: Record<string, number>,
+  locate: (entry: MetaEntry) => Range
+): void => {
+  const targetIndex = indexByRange(targetMap, locate);
+
+  for (const incomingKey of Object.keys(incomingCounts)) {
+    const incomingEntry = incomingMap[incomingKey];
+    if (incomingEntry === undefined) continue;
+
+    const positionKey = rangeKey(locate(incomingEntry));
+    let targetKey = targetIndex.get(positionKey);
+
+    if (targetKey === undefined) {
+      targetKey = nextNumericKey(targetMap);
+      targetMap[targetKey] = incomingEntry;
+      targetIndex.set(positionKey, targetKey);
+    }
+
+    targetCounts[targetKey] =
+      (targetCounts[targetKey] ?? 0) + (incomingCounts[incomingKey] ?? 0);
+  }
+};
+
+const mergeBranchesByPosition = (
+  target: FileCoverage,
+  incoming: FileCoverage
+): void => {
+  const targetIndex = indexByRange(
+    target.branchMap,
+    (entry: BranchMapEntry) => entry.loc
+  );
+
+  for (const incomingKey of Object.keys(incoming.b)) {
+    const incomingEntry = incoming.branchMap[incomingKey];
+    if (incomingEntry === undefined) continue;
+
+    const positionKey = rangeKey(incomingEntry.loc);
+    const arriving = incoming.b[incomingKey];
+
+    let targetKey = targetIndex.get(positionKey);
+    if (targetKey === undefined) {
+      targetKey = nextNumericKey(target.branchMap);
+
+      target.branchMap[targetKey] = incomingEntry;
+      target.b[targetKey] = [...arriving];
+
+      targetIndex.set(positionKey, targetKey);
+      continue;
+    }
+
+    const existing = target.b[targetKey];
+    if (existing === undefined) {
+      target.b[targetKey] = [...arriving];
+      continue;
+    }
+
+    const maxLength = Math.max(existing.length, arriving.length);
+
+    for (let slotIndex = 0; slotIndex < maxLength; slotIndex++)
+      existing[slotIndex] =
+        (existing[slotIndex] ?? 0) + (arriving[slotIndex] ?? 0);
+  }
+};
+
 const mergeFileCoverage = (
   target: FileCoverage,
   incoming: FileCoverage
 ): void => {
-  for (const statementKey of Object.keys(incoming.s))
-    target.s[statementKey] =
-      (target.s[statementKey] ?? 0) + incoming.s[statementKey];
+  mergeCountsByPosition(
+    target.statementMap,
+    target.s,
+    incoming.statementMap,
+    incoming.s,
+    (entry: StatementMapEntry) => entry
+  );
 
-  for (const functionKey of Object.keys(incoming.f))
-    target.f[functionKey] =
-      (target.f[functionKey] ?? 0) + incoming.f[functionKey];
+  mergeCountsByPosition(
+    target.fnMap,
+    target.f,
+    incoming.fnMap,
+    incoming.f,
+    (entry: FnMapEntry) => entry.decl
+  );
 
-  for (const branchKey of Object.keys(incoming.b)) {
-    const existing = target.b[branchKey];
-    const arriving = incoming.b[branchKey];
-    if (!existing) {
-      target.b[branchKey] = [...arriving];
-      continue;
-    }
-    for (let slotIndex = 0; slotIndex < arriving.length; slotIndex++)
-      existing[slotIndex] = (existing[slotIndex] ?? 0) + arriving[slotIndex];
-  }
+  mergeBranchesByPosition(target, incoming);
 };
 
 const buildBaseSource = (
