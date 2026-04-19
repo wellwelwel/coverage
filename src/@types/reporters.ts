@@ -2,6 +2,7 @@ import type { PluginContext } from 'poku/plugins';
 import type { DiscoveredBranch } from './branch-discovery.js';
 import type { CoverageOptions } from './coverage.js';
 import type { ResolvedFileFilter } from './file-filter.js';
+import type { HtmlProjectedCoverage } from './html.js';
 import type { CoverageMap } from './istanbul.js';
 import type { CoverageModel } from './tree.js';
 import type { Watermarks } from './watermarks.js';
@@ -58,11 +59,17 @@ export type TextHandler = {
   report: Reporter;
 };
 
+export type HtmlRuntimeHandler = {
+  project: (context: ReporterContext) => HtmlProjectedCoverage | null;
+};
+
 export type HtmlHandler = {
+  runtimes: Record<Runtime, HtmlRuntimeHandler>;
   report: Reporter;
 };
 
 export type HtmlSpaHandler = {
+  runtimes: Record<Runtime, HtmlRuntimeHandler>;
   report: Reporter;
 };
 
