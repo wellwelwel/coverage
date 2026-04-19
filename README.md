@@ -21,8 +21,6 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 >
 > [**@pokujs/coverage**](https://github.com/pokujs/coverage) supports **JSONC**, **YAML**, and **TOML** config files out of the box, allowing comments in your configuration. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
 
-> <img src="./.github/assets/sample.png" width="420" />
-
 > [!IMPORTANT]
 >
 > While **@pokujs/coverage** is in the experimental stage (`0.x.x`), **any release may introduce breaking changes**.
@@ -39,44 +37,33 @@ npm i -D poku @pokujs/coverage
 
 ### Usage
 
-#### Enable the Plugin
-
-```js
-// poku.config.js
-import { coverage } from '@pokujs/coverage';
-import { defineConfig } from 'poku';
-
-export default defineConfig({
-  plugins: [coverage()],
-});
+```json
+{
+  "scripts": {
+    "test:bun": "bun poku --coverage",
+    "test:deno": "deno run -A npm:poku --coverage",
+    "test:node": "poku --coverage"
+  }
+}
 ```
 
-Run `poku` and a coverage summary will be printed after your test results.
+- Then run the tests and a coverage summary will be printed after your test results.
 
 ---
 
 ## Options
-
-### `requireFlag`
-
-- **Type:** `boolean`
-- **Default:** `false`
-
-When `true`, the plugin only activates if `--coverage` is passed on the CLI.
 
 ### `reporter`
 
 - **Type:** `ReporterName | ReporterName[]`
 - **Default:** `'text'`
 
-One or more reporters to run. Available: `'lcov'`, `'lcovonly'`, `'text-lcov'`, `'v8'`, `'text'`, `'text-summary'`, `'teamcity'`, `'json'`, `'json-summary'`, `'cobertura'`, `'clover'`, `'none'`.
+Available: `'lcov'`, `'lcovonly'`, `'text-lcov'`, `'v8'`, `'text'`, `'text-summary'`, `'teamcity'`, `'json'`, `'json-summary'`, `'cobertura'`, `'clover'`, `'none'`.
 
-### `reportsDirectory`
+Reports not supported by **Bun** will generate lcov as a fallback:
 
-- **Type:** `string`
-- **Default:** `'./coverage'`
-
-Directory where report files are written. Resolved relative to the Poku working directory.
+- `v8`
+- `json` (depends on `v8`)
 
 ### `include`
 
@@ -134,6 +121,13 @@ Hide files with no executable code from the `text` reporter table. Totals are un
 
 Controls clickable file links in the `text` reporter. `true` = plain `file://` links; `false` = disabled; or specify `'vscode'`, `'jetbrains'`, `'cursor'`, `'windsurf'`, `'vscode-insiders'` to emit IDE-specific URLs.
 
+### `reportsDirectory`
+
+- **Type:** `string`
+- **Default:** `'./coverage'`
+
+Directory where report files are written. Resolved relative to the Poku working directory.
+
 ### `excludeAfterRemap`
 
 - **Type:** `boolean`
@@ -161,6 +155,13 @@ Override temp-directory cleanup at teardown. `undefined` = auto (clean iff auto-
 - **Default:** `undefined`
 
 Path to a config file, or `false` to disable auto-discovery.
+
+### `requireFlag`
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+When `true`, the plugin only activates if `--coverage` is passed on the CLI.
 
 ---
 
@@ -220,20 +221,16 @@ poku --coverageConfig=.coveragerc test/
 
 ## How It Works
 
-Under **Deno**, the plugin sets `DENO_COVERAGE_DIR` before **Poku** spawns any `deno test` child process. Each child inherits the env var automatically and writes raw coverage data into the shared temp directory. On teardown, the plugin shells out to `deno coverage <tempDir>` and forwards the text summary to the console — no JavaScript coverage library is used.
-
-**Node.js** and **Bun** support is coming. Because no established coverage-reporting library on npm (c8, nyc, istanbul-\*, monocart-\*) works across all three runtimes, every runtime path will delegate to the runtime's own CLI (`deno coverage`, `node --experimental-test-coverage`, `bun test --coverage`) rather than importing a shared library. [**Poku**](https://poku.io) is the only test runner that covers all three — follow it for updates.
+Under **Deno**, the plugin sets `DENO_COVERAGE_DIR` before **Poku** spawns tests. Each child inherits the env var automatically and writes raw coverage data into the shared temp directory. On teardown, the plugin shells out to `deno coverage <tempDir>` and forwards the text summary to the console — no JavaScript coverage library is used.
 
 ---
 
 ### File Exclusions
 
-The plugin strips the following files from every report (`text` and `lcov`) before they are emitted, so the numbers reflect only the source code you actually care about:
+The plugin strips the following files from every report before they are emitted, so the numbers reflect only the source code you actually care about:
 
-- **Test files discovered by Poku.** Every file Poku passes through its `runner` hook is recorded and dropped from the produced LCOV. This naturally follows whatever test-file pattern Poku is configured with (default `/\.(test|spec)\./i`) — the plugin never re-implements a parallel regex, so it stays in sync with Poku automatically.
-- **`node_modules/` and `.git/`.** These directories are unconditionally banned from coverage output. Dependencies and VCS metadata are never meaningful coverage targets, and this mirrors Poku's own discovery rules.
-
-The raw `v8` reporter is intentionally **not** affected: it always writes unfiltered raw V8 JSON data, which is the escape hatch when you need the full picture.
+- Every file **Poku** passes through its `runner` hook is recorded and dropped from reports since they are tests.
+- **`node_modules/` and `.git/`.** directories are unconditionally banned from coverage output.
 
 ---
 
