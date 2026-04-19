@@ -1,4 +1,4 @@
-import type { ConfigHandler, CoverageOptions } from './@types/coverage.js';
+import type { CoverageOptions } from './@types/coverage.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { JSONC } from 'jsonc.min';
@@ -74,4 +74,4 @@ const load = (cwd: string, customPath?: string | false): CoverageOptions => {
   return Object.create(null);
 };
 
-export const config: ConfigHandler = { load };
+export const config = { load } as const;

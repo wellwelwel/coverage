@@ -67,17 +67,3 @@ export type SourceCacheResolveInputs = {
   sourceMapCache: SourceMapCache;
   cwd: string;
 };
-
-export type SourceCacheHandler = {
-  resolve: (
-    inputs: SourceCacheResolveInputs
-  ) => ResolvedScriptSource | undefined;
-};
-
-export type ArmCoverageHandler = {
-  isArmCovered: (
-    armStart: number,
-    armEnd: number,
-    allScriptRanges: readonly V8Range[]
-  ) => boolean;
-};

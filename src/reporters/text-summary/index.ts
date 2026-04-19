@@ -3,11 +3,7 @@
  Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-import type {
-  Reporter,
-  Runtime,
-  TextSummaryHandler,
-} from '../../@types/reporters.js';
+import type { Reporter, Runtime } from '../../@types/reporters.js';
 import type { Metric } from '../../@types/text.js';
 import type { WatermarkMetric } from '../../@types/watermarks.js';
 import { lcovonly } from '../lcovonly/index.js';
@@ -86,4 +82,4 @@ const report: Reporter = (context) => {
   console.log(FOOTER);
 };
 
-export const textSummary: TextSummaryHandler = { report };
+export const textSummary = { report } as const;

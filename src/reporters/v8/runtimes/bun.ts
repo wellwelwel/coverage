@@ -1,5 +1,3 @@
-import type { V8RuntimeHandler } from '../../../@types/reporters.js';
-
-export const bun: V8RuntimeHandler = {
-  run: () => {},
-};
+export const bun = {
+  run: (): void => {},
+} as const;

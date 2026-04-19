@@ -3,7 +3,3 @@ export type IgnoreDirective = {
   start?: boolean;
   stop?: boolean;
 };
-
-export type IgnoreDirectivesHandler = {
-  parseSource: (source: string) => Set<number>;
-};

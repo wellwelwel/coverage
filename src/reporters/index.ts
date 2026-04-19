@@ -1,7 +1,8 @@
 import type {
   Reporter,
+  ReporterContext,
   ReporterName,
-  ReportersHandler,
+  Runtime,
 } from '../@types/reporters.js';
 import { warnOnce } from '../utils/warn-once.js';
 import { clover } from './clover/index.js';
@@ -46,44 +47,51 @@ const BUN_UNSUPPORTED_REASONS: Record<string, string> = {
 const isBunUnsupported = (reporterName: string): boolean =>
   Object.hasOwn(BUN_UNSUPPORTED_REASONS, reporterName);
 
-export const reporters: ReportersHandler = {
-  default: defaultReporter,
-  normalize: (option, runtime) => {
-    if (option === undefined) return [defaultReporter];
+const normalize = (
+  option: ReporterName | ReporterName[] | undefined,
+  runtime: Runtime
+): ReporterName[] => {
+  if (option === undefined) return [defaultReporter];
 
-    const reporterList = Array.isArray(option) ? [...option] : [option];
-    if (reporterList.length === 0) return [];
+  const reporterList = Array.isArray(option) ? [...option] : [option];
+  if (reporterList.length === 0) return [];
 
-    if (runtime !== 'bun') return reporterList;
+  if (runtime !== 'bun') return reporterList;
 
-    const unsupportedFound = reporterList.filter(isBunUnsupported);
-    if (unsupportedFound.length === 0) return reporterList;
+  const unsupportedFound = reporterList.filter(isBunUnsupported);
+  if (unsupportedFound.length === 0) return reporterList;
 
-    for (const unsupportedName of unsupportedFound)
-      warnOnce(
-        `bun-${unsupportedName}-fallback`,
-        BUN_UNSUPPORTED_REASONS[unsupportedName]
-      );
-
-    const filtered = reporterList.filter(
-      (reporterName) => !isBunUnsupported(reporterName)
+  for (const unsupportedName of unsupportedFound)
+    warnOnce(
+      `bun-${unsupportedName}-fallback`,
+      BUN_UNSUPPORTED_REASONS[unsupportedName]
     );
-    if (!filtered.includes('lcov')) filtered.push('lcov');
-    return filtered;
-  },
-  run: (reporterList, context) => {
-    for (const reporterName of reporterList) {
-      const reporter = registry.get(reporterName);
 
-      if (!reporter) {
-        warnOnce(
-          `unknown-${reporterName}`,
-          `[@pokujs/coverage] unknown reporter "${reporterName}" — skipping.`
-        );
-        continue;
-      }
-
-      reporter(context);
-    }
-  },
+  const filtered = reporterList.filter(
+    (reporterName) => !isBunUnsupported(reporterName)
+  );
+  if (!filtered.includes('lcov')) filtered.push('lcov');
+  return filtered;
 };
+
+const run = (reporterList: ReporterName[], context: ReporterContext): void => {
+  for (const reporterName of reporterList) {
+    const reporter = registry.get(reporterName);
+
+    if (!reporter) {
+      warnOnce(
+        `unknown-${reporterName}`,
+        `[@pokujs/coverage] unknown reporter "${reporterName}" — skipping.`
+      );
+      continue;
+    }
+
+    reporter(context);
+  }
+};
+
+export const reporters = {
+  default: defaultReporter,
+  normalize,
+  run,
+} as const;

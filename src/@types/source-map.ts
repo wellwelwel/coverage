@@ -84,12 +84,6 @@ export type TraceMap = {
   ) => GeneratedMapping | InvalidGeneratedMapping;
 };
 
-export type TraceMapHandler = {
-  create: (input: SourceMapInput, mapUrl?: string | null) => TraceMap;
-  GREATEST_LOWER_BOUND: 1;
-  LEAST_UPPER_BOUND: -1;
-};
-
 export type ReverseSegment = [number, 0, number, number];
 
 export type SearchMemo = {
@@ -112,20 +106,3 @@ export type ColumnTuple = readonly [number, ...number[]];
 export type SourceMapDocument = EncodedSourceMap | DecodedSourceMap;
 
 export type ReadMapFunction = (filename: string) => string;
-
-export type SourceMapCommentHandler = {
-  commentRegex: () => RegExp;
-  mapFileCommentRegex: () => RegExp;
-  fromComment: (comment: string) => SourceMapDocument;
-  fromMapFileComment: (
-    comment: string,
-    readMap: ReadMapFunction
-  ) => SourceMapDocument;
-  fromSource: (content: string) => SourceMapDocument | null;
-  fromMapFileSource: (
-    content: string,
-    readMap: ReadMapFunction
-  ) => SourceMapDocument | null;
-  removeComments: (source: string) => string;
-  removeMapFileComments: (source: string) => string;
-};

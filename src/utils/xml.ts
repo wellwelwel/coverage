@@ -3,7 +3,7 @@
  Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-import type { XmlAttrs, XmlBuilder, XmlHandler } from '../@types/xml.js';
+import type { XmlAttrs, XmlBuilder } from '../@types/xml.js';
 
 const INDENT = '  ';
 
@@ -62,4 +62,4 @@ const create = (): XmlBuilder => {
   return { openTag, closeTag, inlineTag, closeAll, toString };
 };
 
-export const xml: XmlHandler = { create };
+export const xml = { create } as const;

@@ -1,9 +1,5 @@
 import type { HtmlSpaMetricName } from '../../@types/html.js';
-import type {
-  HtmlSpaHandler,
-  Reporter,
-  Runtime,
-} from '../../@types/reporters.js';
+import type { Reporter, Runtime } from '../../@types/reporters.js';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { formatDatetime } from '../../utils/datetime.js';
@@ -65,4 +61,4 @@ const report: Reporter = (context) => {
   writeFileSync(join(context.reportsDir, 'index.html'), shell);
 };
 
-export const htmlSpa: HtmlSpaHandler = { runtimes: htmlRuntimes, report };
+export const htmlSpa = { runtimes: htmlRuntimes, report } as const;

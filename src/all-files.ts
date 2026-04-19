@@ -1,4 +1,3 @@
-import type { AllFilesHandler } from './@types/all-files.js';
 import type { CoverageMap, FileCoverage } from './@types/istanbul.js';
 import type { ReporterContext, Runtime } from './@types/reporters.js';
 import { readdirSync, readFileSync } from 'node:fs';
@@ -196,8 +195,8 @@ const injectCoverageMap = (
   }
 };
 
-export const allFiles: AllFilesHandler = {
+export const allFiles = {
   discover,
   injectLcov,
   injectCoverageMap,
-};
+} as const;

@@ -7,7 +7,3 @@ export type XmlBuilder = {
   closeAll: () => void;
   toString: () => string;
 };
-
-export type XmlHandler = {
-  create: () => XmlBuilder;
-};

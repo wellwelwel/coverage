@@ -1,6 +1,5 @@
 import type {
   ResolvedScriptSource,
-  SourceCacheHandler,
   SourceCacheResolveInputs,
   SourceMapCacheEntry,
 } from '../../@types/v8.js';
@@ -143,14 +142,16 @@ const resolveFromDisk = (
   };
 };
 
-export const sourceCache: SourceCacheHandler = {
-  resolve: (inputs) => {
-    const fromNodeCache = resolveFromSourceMapCache(inputs);
-    if (fromNodeCache !== undefined) return fromNodeCache;
+const resolve = (
+  inputs: SourceCacheResolveInputs
+): ResolvedScriptSource | undefined => {
+  const fromNodeCache = resolveFromSourceMapCache(inputs);
+  if (fromNodeCache !== undefined) return fromNodeCache;
 
-    const fromDenoCache = resolveFromDenoCache(inputs);
-    if (fromDenoCache !== undefined) return fromDenoCache;
+  const fromDenoCache = resolveFromDenoCache(inputs);
+  if (fromDenoCache !== undefined) return fromDenoCache;
 
-    return resolveFromDisk(inputs);
-  },
+  return resolveFromDisk(inputs);
 };
+
+export const sourceCache = { resolve } as const;

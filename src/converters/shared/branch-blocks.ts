@@ -3,7 +3,6 @@ import type {
   BlockTemplate,
   BranchArmEntry,
   BranchBlockEntry,
-  BranchBlocksHandler,
   PendingBlock,
 } from '../../@types/branch-blocks.js';
 import type { AstArmRange } from '../../@types/branch-discovery.js';
@@ -363,6 +362,6 @@ const build = (
   }
 };
 
-export const branchBlocks: BranchBlocksHandler = {
+export const branchBlocks = {
   build,
-};
+} as const;

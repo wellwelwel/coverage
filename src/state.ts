@@ -1,4 +1,4 @@
-import type { CoverageState, StateHandler } from './@types/coverage.js';
+import type { CoverageState } from './@types/coverage.js';
 
 const create = (): CoverageState => ({
   enabled: false,
@@ -11,4 +11,4 @@ const create = (): CoverageState => ({
   testFiles: new Set(),
 });
 
-export const state: StateHandler = { create };
+export const state = { create } as const;

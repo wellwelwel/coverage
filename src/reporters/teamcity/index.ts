@@ -3,7 +3,7 @@
  Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-import type { Reporter, TeamcityHandler } from '../../@types/reporters.js';
+import type { Reporter } from '../../@types/reporters.js';
 import type { Metric } from '../../@types/text.js';
 import { lcovonly } from '../lcovonly/index.js';
 import { applyIstanbulBranches } from '../shared/file-coverage.js';
@@ -51,4 +51,4 @@ const report: Reporter = (context) => {
   console.log(lines.join('\n'));
 };
 
-export const teamcity: TeamcityHandler = { report };
+export const teamcity = { report } as const;

@@ -1,5 +1,3 @@
-import type { ReporterContext } from './reporters.js';
-
 export type CheckCoverageMetric =
   | 'statements'
   | 'branches'
@@ -22,11 +20,3 @@ export type CheckCoverageFailure = {
 };
 
 export type CheckCoverageInput = number | Partial<CheckCoverageThresholds>;
-
-export type CheckCoverageHandler = {
-  getDefault: () => CheckCoverageThresholds;
-  normalize: (
-    custom: CheckCoverageInput | undefined
-  ) => CheckCoverageThresholds;
-  run: (context: ReporterContext) => void;
-};

@@ -2,9 +2,7 @@ import type { PluginContext } from 'poku/plugins';
 import type { DiscoveredBranch } from './branch-discovery.js';
 import type { CoverageOptions } from './coverage.js';
 import type { ResolvedFileFilter } from './file-filter.js';
-import type { HtmlProjectedCoverage } from './html.js';
 import type { CoverageMap } from './istanbul.js';
-import type { CoverageModel } from './tree.js';
 import type { Watermarks } from './watermarks.js';
 
 export type Runtime = PluginContext['runtime'];
@@ -28,95 +26,6 @@ export type ReporterContext = {
 };
 
 export type Reporter = (context: ReporterContext) => void;
-
-export type LcovRuntimeHandler = {
-  produce: (context: ReporterContext) => string;
-  run: Reporter;
-};
-
-export type LcovHandler = {
-  report: Reporter;
-};
-
-export type LcovOnlyHandler = {
-  parse: (content: string, cwd: string) => CoverageModel;
-  filter: (
-    lcov: string,
-    testFiles: ReadonlySet<string>,
-    cwd: string,
-    resolvedFilter: ResolvedFileFilter
-  ) => string;
-  runtimes: Record<Runtime, LcovRuntimeHandler>;
-  report: Reporter;
-};
-
-export type V8Handler = {
-  runtimes: Record<Runtime, V8RuntimeHandler>;
-  report: Reporter;
-};
-
-export type TextHandler = {
-  report: Reporter;
-};
-
-export type HtmlRuntimeHandler = {
-  project: (context: ReporterContext) => HtmlProjectedCoverage | null;
-};
-
-export type HtmlHandler = {
-  runtimes: Record<Runtime, HtmlRuntimeHandler>;
-  report: Reporter;
-};
-
-export type HtmlSpaHandler = {
-  runtimes: Record<Runtime, HtmlRuntimeHandler>;
-  report: Reporter;
-};
-
-export type TextSummaryHandler = {
-  report: Reporter;
-};
-
-export type TeamcityHandler = {
-  report: Reporter;
-};
-
-export type JsonSummaryHandler = {
-  report: Reporter;
-};
-
-export type JsonHandler = {
-  report: Reporter;
-};
-
-export type CoberturaHandler = {
-  report: Reporter;
-};
-
-export type CloverHandler = {
-  report: Reporter;
-};
-
-export type TextLcovHandler = {
-  report: Reporter;
-};
-
-export type NoneHandler = {
-  report: Reporter;
-};
-
-export type ReportersHandler = {
-  default: ReporterName;
-  normalize: (
-    option: ReporterName | ReporterName[] | undefined,
-    runtime: Runtime
-  ) => ReporterName[];
-  run: (reporterList: ReporterName[], context: ReporterContext) => void;
-};
-
-export type V8RuntimeHandler = {
-  run: Reporter;
-};
 
 export type PackageGroup<Entry> = {
   relativeDir: string;

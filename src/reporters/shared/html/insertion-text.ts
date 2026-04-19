@@ -6,7 +6,6 @@
 import type {
   HtmlInsertionOffset,
   HtmlInsertionText,
-  HtmlInsertionTextHandler,
 } from '../../../@types/html.js';
 
 const WHITE_RE = /[ \f\n\r\t\v\u00A0\u2028\u2029]/;
@@ -120,4 +119,4 @@ const create = (
   return handler;
 };
 
-export const insertionText: HtmlInsertionTextHandler = { create };
+export const insertionText = { create } as const;

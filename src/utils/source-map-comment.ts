@@ -6,7 +6,6 @@
 
 import type {
   ReadMapFunction,
-  SourceMapCommentHandler,
   SourceMapDocument,
 } from '../@types/source-map.js';
 
@@ -87,7 +86,7 @@ const removeInlineComments = (source: string): string =>
 const removeFileComments = (source: string): string =>
   source.replace(mapFileCommentRegex(), '');
 
-export const sourceMapComment: SourceMapCommentHandler = {
+export const sourceMapComment = {
   commentRegex,
   mapFileCommentRegex,
   fromComment: parseInlineComment,
@@ -96,4 +95,4 @@ export const sourceMapComment: SourceMapCommentHandler = {
   fromMapFileSource: findLastFileComment,
   removeComments: removeInlineComments,
   removeMapFileComments: removeFileComments,
-};
+} as const;

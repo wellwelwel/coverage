@@ -6,7 +6,6 @@
 import type {
   HtmlAnnotatedLine,
   HtmlAnnotationResult,
-  HtmlAnnotatorHandler,
   HtmlBranchLocation,
   HtmlStructuredLine,
 } from '../../../@types/html.js';
@@ -255,4 +254,4 @@ const annotate = (
   return { lines, maxLines: lines.length };
 };
 
-export const htmlAnnotator: HtmlAnnotatorHandler = { annotate };
+export const htmlAnnotator = { annotate } as const;

@@ -1,11 +1,8 @@
-import type {
-  ReporterContext,
-  V8RuntimeHandler,
-} from '../../../@types/reporters.js';
+import type { ReporterContext } from '../../../@types/reporters.js';
 import { copyV8JsonsTo } from '../copy.js';
 
 const run = (context: ReporterContext): void => {
   copyV8JsonsTo(context.tempDir, context.reportsDir);
 };
 
-export const node: V8RuntimeHandler = { run };
+export const node = { run } as const;

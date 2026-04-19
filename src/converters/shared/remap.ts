@@ -2,7 +2,6 @@ import type {
   OriginalFileState,
   RemapInputs,
   RemappedScriptEntry,
-  SourceMapRemapHandler,
 } from '../../@types/remap.js';
 import type {
   InvalidOriginalMapping,
@@ -245,4 +244,4 @@ const project = (inputs: RemapInputs): RemappedScriptEntry[] => {
   return entries;
 };
 
-export const sourceMapRemap: SourceMapRemapHandler = { project };
+export const sourceMapRemap = { project } as const;

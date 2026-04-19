@@ -1,4 +1,4 @@
-import type { ArmCoverageHandler, V8Range } from '../../@types/v8.js';
+import type { V8Range } from '../../@types/v8.js';
 
 const isArmCovered = (
   armStart: number,
@@ -28,4 +28,4 @@ const isArmCovered = (
   return innermostRange.count > 0;
 };
 
-export const armCoverage: ArmCoverageHandler = { isArmCovered };
+export const armCoverage = { isArmCovered } as const;

@@ -1,5 +1,4 @@
 import type {
-  FileFilterHandler,
   FileFilterOptions,
   ResolvedFileFilter,
 } from './@types/file-filter.js';
@@ -81,8 +80,8 @@ const matches = (
   return true;
 };
 
-export const fileFilter: FileFilterHandler = {
+export const fileFilter = {
   getDefaultExclude,
   resolve,
   matches,
-};
+} as const;

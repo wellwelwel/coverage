@@ -1,5 +1,5 @@
 import type { AstArmRange } from './branch-discovery.js';
-import type { FileAggregation, SubRangeEntry } from './v8.js';
+import type { SubRangeEntry } from './v8.js';
 
 export type BlockTemplate = {
   nodeStart: number;
@@ -25,12 +25,4 @@ export type BranchBlockEntry = {
   endOffset: number;
   order: number;
   arms: BranchArmEntry[];
-};
-
-export type BranchBlocksHandler = {
-  build: (
-    fileAggregation: FileAggregation,
-    source: string,
-    lineStartTable: number[]
-  ) => void;
 };

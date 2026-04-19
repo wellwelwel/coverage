@@ -14,10 +14,6 @@ export type RemappedScriptEntry = {
   syntheticScript: V8ScriptCoverage;
 };
 
-export type SourceMapRemapHandler = {
-  project: (inputs: RemapInputs) => RemappedScriptEntry[];
-};
-
 export type OriginalFileState = {
   originalPath: string;
   originalSource: string;

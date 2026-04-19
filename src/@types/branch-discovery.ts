@@ -1,5 +1,3 @@
-import type { Node } from 'acorn';
-
 export type BranchArmPosition = {
   line: number;
   column: number;
@@ -22,11 +20,4 @@ export type AstBranchEntry = {
   nodeStart: number;
   armStarts: readonly number[];
   armEnds: readonly number[];
-};
-
-export type AstWalkHandler = {
-  isBranchNode: (candidate: Node) => boolean;
-  isOptionalChaining: (candidate: Node) => boolean;
-  isNodeLike: (candidate: unknown) => candidate is Node;
-  forEachNode: (root: Node, visitor: (current: Node) => void) => void;
 };

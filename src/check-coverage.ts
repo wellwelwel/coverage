@@ -1,6 +1,5 @@
 import type {
   CheckCoverageFailure,
-  CheckCoverageHandler,
   CheckCoverageInput,
   CheckCoverageMetric,
   CheckCoverageThresholds,
@@ -201,8 +200,8 @@ const run = (context: ReporterContext): void => {
   process.exitCode = 1;
 };
 
-export const checkCoverage: CheckCoverageHandler = {
+export const checkCoverage = {
   getDefault,
   normalize,
   run,
-};
+} as const;

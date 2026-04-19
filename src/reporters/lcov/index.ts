@@ -3,7 +3,7 @@
  Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-import type { LcovHandler, Reporter } from '../../@types/reporters.js';
+import type { Reporter } from '../../@types/reporters.js';
 import { join } from 'node:path';
 import { html } from '../html/index.js';
 import { lcovonly } from '../lcovonly/index.js';
@@ -17,4 +17,4 @@ const report: Reporter = (context) => {
   });
 };
 
-export const lcov: LcovHandler = { report };
+export const lcov = { report } as const;

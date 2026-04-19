@@ -3,7 +3,7 @@
  Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-import type { JsonHandler, Reporter } from '../../@types/reporters.js';
+import type { Reporter } from '../../@types/reporters.js';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { converters } from '../../converters/index.js';
@@ -28,4 +28,4 @@ const report: Reporter = (context) => {
   );
 };
 
-export const json: JsonHandler = { report };
+export const json = { report } as const;

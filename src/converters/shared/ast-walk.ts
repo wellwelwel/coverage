@@ -1,5 +1,4 @@
 import type { Node } from 'acorn';
-import type { AstWalkHandler } from '../../@types/branch-discovery.js';
 
 const SKIP_KEYS: ReadonlySet<string> = new Set([
   'type',
@@ -55,9 +54,9 @@ const forEachNode = (root: Node, visitor: (current: Node) => void): void => {
   walkNode(root);
 };
 
-export const astWalk: AstWalkHandler = {
+export const astWalk = {
   isBranchNode,
   isOptionalChaining,
   isNodeLike,
   forEachNode,
-};
+} as const;

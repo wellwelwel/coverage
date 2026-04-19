@@ -1,7 +1,4 @@
-import type {
-  LcovRuntimeHandler,
-  ReporterContext,
-} from '../../../@types/reporters.js';
+import type { ReporterContext } from '../../../@types/reporters.js';
 import { allFiles } from '../../../all-files.js';
 import { converters } from '../../../converters/index.js';
 import { filter } from '../filter.js';
@@ -28,4 +25,4 @@ const run = (context: ReporterContext): void => {
   writeLcovFile(context.reportsDir, produce(context));
 };
 
-export const v8ConverterRuntime: LcovRuntimeHandler = { produce, run };
+export const v8ConverterRuntime = { produce, run } as const;

@@ -5,10 +5,7 @@
  * ISC License
  */
 
-import type {
-  IgnoreDirective,
-  IgnoreDirectivesHandler,
-} from '../../@types/ignore-directives.js';
+import type { IgnoreDirective } from '../../@types/ignore-directives.js';
 
 const IGNORE_NEXT_ALONE = /^\W*\/\* v8 ignore next/;
 const IGNORE_NEXT_INLINE = /\/\* v8 ignore next/;
@@ -71,6 +68,6 @@ const parseSource = (source: string): Set<number> => {
   return ignoredLines;
 };
 
-export const ignoreDirectives: IgnoreDirectivesHandler = {
+export const ignoreDirectives = {
   parseSource,
-};
+} as const;

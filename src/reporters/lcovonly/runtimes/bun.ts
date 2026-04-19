@@ -1,7 +1,4 @@
-import type {
-  LcovRuntimeHandler,
-  ReporterContext,
-} from '../../../@types/reporters.js';
+import type { ReporterContext } from '../../../@types/reporters.js';
 import { readFileSync } from 'node:fs';
 import { allFiles } from '../../../all-files.js';
 import { filter } from '../filter.js';
@@ -35,4 +32,4 @@ const run = (context: ReporterContext): void => {
   writeLcovFile(context.reportsDir, produce(context));
 };
 
-export const bun: LcovRuntimeHandler = { produce, run };
+export const bun = { produce, run } as const;

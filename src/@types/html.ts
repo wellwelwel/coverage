@@ -21,13 +21,6 @@ export type HtmlAnnotationResult = {
   maxLines: number;
 };
 
-export type HtmlAnnotatorHandler = {
-  annotate: (
-    fileCoverage: IstanbulFileCoverage,
-    sourceText: string
-  ) => HtmlAnnotationResult;
-};
-
 export type HtmlWatermarkClasses = {
   statements: WatermarkLevel | 'empty';
   branches: WatermarkLevel | 'empty';
@@ -61,10 +54,6 @@ export type HtmlInsertionText = {
   wrapLine: (startText: string, endText: string) => void;
   originalLength: () => number;
   toString: () => string;
-};
-
-export type HtmlInsertionTextHandler = {
-  create: (text: string, consumeBlanks: boolean) => HtmlInsertionText;
 };
 
 export type HtmlInsertionOffset = {

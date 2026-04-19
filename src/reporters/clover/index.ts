@@ -3,7 +3,7 @@
  Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-import type { CloverHandler, Reporter } from '../../@types/reporters.js';
+import type { Reporter } from '../../@types/reporters.js';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildFromCoverageMap } from './from-coverage-map.js';
@@ -27,4 +27,4 @@ const report: Reporter = (context) => {
   );
 };
 
-export const clover: CloverHandler = { report };
+export const clover = { report } as const;

@@ -5,7 +5,6 @@
 
 import type {
   FileSummary,
-  JsonSummaryHandler,
   MetricSummary,
   Reporter,
 } from '../../@types/reporters.js';
@@ -82,4 +81,4 @@ const report: Reporter = (context) => {
   );
 };
 
-export const jsonSummary: JsonSummaryHandler = { report };
+export const jsonSummary = { report } as const;

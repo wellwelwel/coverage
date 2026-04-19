@@ -1,5 +1,4 @@
 import type { Program } from 'acorn';
-import type { AstCacheHandler } from '../../@types/ast-cache.js';
 import { parse as acornParse } from 'acorn';
 
 const ACORN_OPTIONS = {
@@ -34,7 +33,7 @@ const reset = (): void => {
   cachedPrograms.clear();
 };
 
-export const astCache: AstCacheHandler = {
+export const astCache = {
   parse,
   reset,
-};
+} as const;

@@ -22,7 +22,6 @@ import type {
   SourceMapSegment,
   SourceNeedle,
   TraceMap,
-  TraceMapHandler,
 } from '../../@types/source-map.js';
 import { buildBySources } from './by-source.js';
 import { createSourceResolver } from './resolve.js';
@@ -227,8 +226,8 @@ const create = (input: SourceMapInput, mapUrl?: string | null): TraceMap => {
   };
 };
 
-export const traceMap: TraceMapHandler = {
+export const traceMap = {
   create,
   GREATEST_LOWER_BOUND,
   LEAST_UPPER_BOUND,
-};
+} as const;

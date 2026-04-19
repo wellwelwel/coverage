@@ -1,4 +1,4 @@
-import type { LineColumn, OffsetTableHandler } from '../@types/offsets.js';
+import type { LineColumn } from '../@types/offsets.js';
 
 const lineStarts = (source: string): number[] => {
   const buffer = Buffer.from(source, 'utf8');
@@ -70,9 +70,9 @@ const toOffset = (location: LineColumn, lineStartTable: number[]): number => {
   return lineStartTable[lineIndex] + location.column;
 };
 
-export const offsets: OffsetTableHandler = {
+export const offsets = {
   lineStarts,
   rangeLines,
   toLocation,
   toOffset,
-};
+} as const;

@@ -1,6 +1,7 @@
 import type { ChildProcess } from 'node:child_process';
-import type { CoverageState } from '../@types/coverage.js';
-import type { DataListener, RuntimeHandler } from '../@types/runtimes.js';
+import type { PluginContext } from 'poku/plugins';
+import type { CoverageOptions, CoverageState } from '../@types/coverage.js';
+import type { DataListener } from '../@types/runtimes.js';
 import { mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { escapeRegex, slug } from '../utils/strings.js';
@@ -87,10 +88,17 @@ const runner = (
   ];
 };
 
-export const bun: RuntimeHandler = {
-  setup: (_context, options, state) => setup(options, state, 'bun'),
+export const bun = {
+  setup: (
+    _context: PluginContext,
+    options: CoverageOptions,
+    state: CoverageState
+  ): void => setup(options, state, 'bun'),
   runner,
   onTestProcess,
-  teardown: (context, options, state) =>
-    teardown(context, options, state, 'bun'),
-};
+  teardown: (
+    context: PluginContext,
+    options: CoverageOptions,
+    state: CoverageState
+  ): void => teardown(context, options, state, 'bun'),
+} as const;

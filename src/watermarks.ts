@@ -2,7 +2,6 @@ import type {
   WatermarkLevel,
   WatermarkMetric,
   Watermarks,
-  WatermarksHandler,
 } from './@types/watermarks.js';
 
 const DEFAULT_WATERMARKS: Watermarks = {
@@ -62,8 +61,8 @@ const normalize = (custom: Partial<Watermarks> | undefined): Watermarks => {
   return resolved;
 };
 
-export const watermarks: WatermarksHandler = {
+export const watermarks = {
   getDefault,
   classForPercent,
   normalize,
-};
+} as const;

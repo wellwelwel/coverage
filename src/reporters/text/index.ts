@@ -1,4 +1,4 @@
-import type { Reporter, TextHandler } from '../../@types/reporters.js';
+import type { Reporter } from '../../@types/reporters.js';
 import { resolveUrlBuilder } from '../../utils/ide.js';
 import { lcovonly } from '../lcovonly/index.js';
 import { applyIstanbulBranches } from '../shared/file-coverage.js';
@@ -35,4 +35,4 @@ const report: Reporter = (context) => {
   console.log(table);
 };
 
-export const text: TextHandler = { report };
+export const text = { report } as const;

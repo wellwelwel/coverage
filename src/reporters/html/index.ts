@@ -3,7 +3,7 @@ import type {
   HtmlSummaryChild,
   HtmlWalkInput,
 } from '../../@types/html.js';
-import type { HtmlHandler, Reporter } from '../../@types/reporters.js';
+import type { Reporter } from '../../@types/reporters.js';
 import type { TreeNode } from '../../@types/tree.js';
 import type { Watermarks } from '../../@types/watermarks.js';
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -190,4 +190,4 @@ const report: Reporter = (context) => {
   });
 };
 
-export const html: HtmlHandler = { runtimes: htmlRuntimes, report };
+export const html = { runtimes: htmlRuntimes, report } as const;

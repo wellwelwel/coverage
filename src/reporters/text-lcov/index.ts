@@ -3,7 +3,7 @@
  Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-import type { Reporter, TextLcovHandler } from '../../@types/reporters.js';
+import type { Reporter } from '../../@types/reporters.js';
 import { lcovonly } from '../lcovonly/index.js';
 
 const report: Reporter = (context) => {
@@ -13,4 +13,4 @@ const report: Reporter = (context) => {
   console.log(output);
 };
 
-export const textLcov: TextLcovHandler = { report };
+export const textLcov = { report } as const;

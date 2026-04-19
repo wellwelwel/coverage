@@ -14,14 +14,6 @@ export type CoverageState = {
   testFiles: Set<string>;
 };
 
-export type StateHandler = {
-  create: () => CoverageState;
-};
-
-export type ConfigHandler = {
-  load: (cwd: string, customPath?: string | false) => CoverageOptions;
-};
-
 export type CoverageOptions = {
   /**
    * Path to a config file, or `false` to disable auto-discovery.

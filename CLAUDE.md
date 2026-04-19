@@ -52,12 +52,10 @@ The first code coverage package that targets Node.js, Bun, and Deno simultaneous
 
 ### Exports
 
-- **Prefer object-approach over prefixed functions.** `lcov.filter`, not `filterLcov`. `state.create`, not `createState`. `converters.v8ToLcov`, not `convertV8ToLcov`. Export a single `const` named after the module, typed via a handler type in `@types/`, aggregating the operations as properties.
+- **Prefer object-approach over prefixed functions.** `lcov.filter`, not `filterLcov`. `state.create`, not `createState`. `converters.v8ToLcov`, not `convertV8ToLcov`. Export a single `const` named after the module, aggregating the operations as properties.
   - Applies from day one, including single-method modules. The namespace is the future extension point AND the present consistency point.
-  - Handler property keys may be shorter than the 5-character minimum (`run`, `parse`, `load`). That minimum applies to variables, not to stable interface keys.
 - **Pick the module by what the operation produces or transforms, not by who imports it.** `filterLcov` is LCOV to LCOV, so `lcov.filter`. `convertV8ToLcov` is V8 JSON to LCOV (distinct formats), so `converters.v8ToLcov`.
   - A converter is a format to format transformation between distinct formats (V8 to LCOV, V8 to istanbul). Same-format transformations stay in their format's own domain, never under `converters/`.
-- **Place the handler type in the matching `@types/` domain file.** Create a new domain file if none fits. Never split related types across files just to "keep handlers separate".
 - **Wire external consumers through the namespace:** `lcov.parse(...)`, `reporters.run(...)`. Sibling files inside the same directory may import each other directly when going through `index.ts` would create a cycle. When importing the namespace shadows a local variable, rename the local, never the import (e.g. `state` to `coverageState`).
 - **Update this file in the same commit.** If you introduced a new pattern or structure, add it to the rules above. Architecture drift happens the moment a refactor is committed without the doc update.
 
