@@ -9,6 +9,10 @@ const reset = {
     POKU_TEST_NAME_PATTERN: undefined,
     POKU_TEST_SKIP_PATTERN: undefined,
   },
+  engine: {
+    NODE_V8_COVERAGE: undefined,
+    DENO_COVERAGE_DIR: undefined,
+  },
 };
 
 export const isWindows = currentPlatform === 'win32';
@@ -17,17 +21,17 @@ export const runtimeSpecs: Record<Runtime, RuntimeSpec> = {
   node: {
     command: isWindows ? 'npx.cmd' : 'poku',
     args: isWindows ? ['poku'] : [],
-    env: { ...reset.poku, NODE_V8_COVERAGE: undefined },
+    env: { ...reset.poku, ...reset.engine },
   },
   deno: {
     command: 'deno',
     args: ['run', '-A', 'npm:poku'],
-    env: { ...reset.poku, DENO_COVERAGE_DIR: undefined },
+    env: { ...reset.poku, ...reset.engine },
   },
   bun: {
     command: 'bun',
     args: ['--bun', 'poku'],
-    env: reset.poku,
+    env: { ...reset.poku, ...reset.engine },
   },
 };
 
