@@ -88,7 +88,7 @@ const metricForName = (
 };
 
 const BUN_BRANCHES_WARNING =
-  '[@pokujs/coverage] check-coverage: skipping "branches" threshold on Bun — native LCOV output has no branch records. Configure other metrics or run on Node/Deno for branch enforcement.';
+  '[@pokujs/coverage] check-coverage: skipping "branches" threshold on Bun (native LCOV output has no branch records). Configure other metrics or run on Node/Deno for branch enforcement.';
 
 const collectFailures = (
   files: CoverageModel,

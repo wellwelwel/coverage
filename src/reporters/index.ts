@@ -81,7 +81,7 @@ const run = (reporterList: ReporterName[], context: ReporterContext): void => {
     if (!reporter) {
       warnOnce(
         `unknown-${reporterName}`,
-        `[@pokujs/coverage] unknown reporter "${reporterName}" — skipping.`
+        `[@pokujs/coverage] unknown reporter "${reporterName}", skipping.`
       );
       continue;
     }

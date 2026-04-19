@@ -123,7 +123,7 @@ export type CoverageOptions = {
   /**
    * When `true`, globs match original source paths (post source-map
    * remap). When `false`, they match transpiled paths (pre-remap, c8
-   * default). Exclusive — the filter runs at exactly one point.
+   * default). Exclusive: the filter runs at exactly one point.
    *
    * @default true
    */
