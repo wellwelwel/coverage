@@ -19,7 +19,7 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 > [!TIP]
 >
-> [**@pokujs/coverage**](https://github.com/pokujs/coverage) supports **JSONC**, **YAML**, and **TOML** config files out of the box, allowing comments in your configuration. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
+> [**@pokujs/coverage**](https://github.com/pokujs/coverage) supports **JSONC**, **YAML**, and **TOML** config files out of the box. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
 
 > [!IMPORTANT]
 >
@@ -47,7 +47,7 @@ npm i -D poku @pokujs/coverage
 }
 ```
 
-- Then run the tests and a coverage summary will be printed after your test results.
+- Then run the tests and a coverage summary will be printed after the suite results.
 
 ---
 
@@ -58,7 +58,20 @@ npm i -D poku @pokujs/coverage
 - **Type:** `ReporterName | ReporterName[]`
 - **Default:** `'text'`
 
-Available: `'lcov'`, `'lcovonly'`, `'text-lcov'`, `'v8'`, `'text'`, `'text-summary'`, `'teamcity'`, `'json'`, `'json-summary'`, `'cobertura'`, `'clover'`, `'none'`.
+Available:
+
+- `'lcov'`
+- `'lcovonly'`
+- `'text-lcov'`
+- `'v8'`
+- `'text'`
+- `'text-summary'`
+- `'teamcity'`
+- `'json'`
+- `'json-summary'`
+- `'cobertura'`
+- `'clover'`
+- `'none'`
 
 > [!NOTE]
 >
@@ -121,7 +134,11 @@ Hide files with no executable code from the `text` reporter table. Totals are un
 - **Type:** `boolean | IdeName`
 - **Default:** `true`
 
-Controls clickable file links in the `text` reporter. `true` = plain `file://` links; `false` = disabled; or specify `'vscode'`, `'jetbrains'`, `'cursor'`, `'windsurf'`, `'vscode-insiders'` to emit IDE-specific URLs.
+Controls clickable file links in the `text` reporter.
+
+- `true`: plain `file://` links.
+- `'vscode'`, `'jetbrains'`, `'cursor'`, `'windsurf'`, `'vscode-insiders'`: emit IDE-specific URLs.
+- `false`: disabled.
 
 ### › `reportsDirectory`
 
@@ -149,7 +166,11 @@ Directory where raw coverage data is written. When omitted, a temp dir is create
 - **Type:** `boolean`
 - **Default:** auto
 
-Override temp-directory cleanup at teardown. `undefined` = auto (clean iff auto-generated); `true` = always clean; `false` = never clean.
+Override temp-directory cleanup at teardown.
+
+- `undefined`: auto (clean only if auto-generated).
+- `true`: always clean.
+- `false`: never clean.
 
 ### › `config`
 
@@ -207,7 +228,7 @@ coverage({
 >
 > When no `config` is specified, the plugin automatically searches for `.coveragerc`, `.coverage.json`, `.coverage.jsonc`, `.coverage.yaml`, or `.coverage.toml` in the working directory.
 
-You can also specify the config path via CLI:
+You can also specify the config path via **CLI**:
 
 ```bash
 poku --coverage --coverageConfig=.coveragerc test/
@@ -217,7 +238,7 @@ poku --coverage --coverageConfig=.coveragerc test/
 >
 > **Priority order:**
 >
-> - For config file discovery: `--coverageConfig` (CLI) > `config` (plugin option) > auto-discovery
+> - For config file discovery: `--coverageConfig` (**CLI**) > `config` (plugin option) > auto-discovery
 > - For coverage options: plugin options > config file options
 
 ---
@@ -226,7 +247,7 @@ poku --coverage --coverageConfig=.coveragerc test/
 
 - 🐢 Under **Node.js**, the plugin sets `NODE_V8_COVERAGE` before **Poku** spawns tests. On teardown, the plugin reads the **V8** **JSON** files from `<tempDir>` and forwards the data.
 - 🦕 Under **Deno**, the plugin sets `DENO_COVERAGE_DIR` before **Poku** spawns tests. On teardown, the plugin shells out to `deno coverage <tempDir>` and forwards the data.
-- 🍞 Under **Bun**, the plugin appends `--coverage --coverage-reporter=lcov --coverage-dir=<tempDir>` to each test command. On teardown, the plugin reads the **LCOV** files Bun wrote and merges them.
+- 🍞 Under **Bun**, the plugin appends `--coverage --coverage-reporter=lcov --coverage-dir=<tempDir>` to each test command. On teardown, the plugin reads the **LCOV** files **Bun** wrote and merges them.
 
 ---
 
@@ -234,7 +255,7 @@ poku --coverage --coverageConfig=.coveragerc test/
 
 The plugin strips the following files from every report before they are emitted, so the numbers reflect only the source code you actually care about:
 
-- Every file **Poku** passes through its `runner` hook is recorded and dropped from reports since they are tests.
+- Every file **Poku** passes through its `runner` hook is recorded and dropped from reports since they are test files.
 - **`node_modules/` and `.git/`.** directories are unconditionally banned from coverage output.
 
 ---
