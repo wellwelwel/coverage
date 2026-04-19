@@ -25,7 +25,7 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 > [!IMPORTANT]
 >
-> While **@pokujs/coverage** is in the experimental stage (`0.x.x`), **any release may introduce breaking changes** (including patch versions).
+> While **@pokujs/coverage** is in the experimental stage (`0.x.x`), **any release may introduce breaking changes**.
 
 ---
 
