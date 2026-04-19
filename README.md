@@ -19,13 +19,13 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 > [!TIP]
 >
-> [**@pokujs/coverage**](https://github.com/pokujs/coverage) supports **JSONC**, **YAML**, and **TOML** config files out of the box, allowing comments in your configuration. You can also use **JavaScript** and **TypeSript** by setting the options directly in the plugin.
+> [**@pokujs/coverage**](https://github.com/pokujs/coverage) supports **JSONC**, **YAML**, and **TOML** config files out of the box, allowing comments in your configuration. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
 
 > <img src="./.github/assets/sample.png" width="420" />
 
 > [!IMPORTANT]
 >
-> While **@pokujs/coverage** is in the experimental stage (`0.x.x`), **any release may introduce breaking changes** (including patch versions). Pin the exact version in your `package.json` if you need stability.
+> While **@pokujs/coverage** is in the experimental stage (`0.x.x`), **any release may introduce breaking changes** (including patch versions).
 
 ---
 
