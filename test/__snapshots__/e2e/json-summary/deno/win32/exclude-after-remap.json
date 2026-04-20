@@ -1,54 +1,57 @@
 {
-  "src/survivor.js": {
+  "reporter": "json-summary",
+  "totals": {
     "statements": {
       "total": 4,
       "covered": 4,
-      "skipped": 0,
-      "pct": 100
+      "missed": 0,
+      "pct": "100.00 %"
     },
     "branches": {
       "total": 1,
       "covered": 1,
-      "skipped": 0,
-      "pct": 100
+      "missed": 0,
+      "pct": "100.00 %"
     },
     "functions": {
       "total": 1,
       "covered": 1,
-      "skipped": 0,
-      "pct": 100
+      "missed": 0,
+      "pct": "100.00 %"
     },
     "lines": {
       "total": 4,
       "covered": 4,
-      "skipped": 0,
-      "pct": 100
+      "missed": 0,
+      "pct": "100.00 %"
     }
   },
-  "total": {
-    "statements": {
-      "total": 4,
-      "covered": 4,
-      "skipped": 0,
-      "pct": 100
-    },
-    "branches": {
-      "total": 1,
-      "covered": 1,
-      "skipped": 0,
-      "pct": 100
-    },
-    "functions": {
-      "total": 1,
-      "covered": 1,
-      "skipped": 0,
-      "pct": 100
-    },
-    "lines": {
-      "total": 4,
-      "covered": 4,
-      "skipped": 0,
-      "pct": 100
+  "files": {
+    "src/survivor.js": {
+      "statements": {
+        "total": 4,
+        "covered": 4,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "branches": {
+        "total": 1,
+        "covered": 1,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "lines": {
+        "total": 4,
+        "covered": 4,
+        "missed": 0,
+        "pct": "100.00 %"
+      }
     }
   }
 }

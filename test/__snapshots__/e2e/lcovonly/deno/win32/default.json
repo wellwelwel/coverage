@@ -1,91 +1,92 @@
-[
-  {
+{
+  "reporter": "lcovonly",
+  "totals": {
     "lines": {
-      "found": 19,
-      "hit": 16,
-      "details": [
+      "total": 142,
+      "covered": 132,
+      "missed": 10,
+      "pct": "92.96 %"
+    },
+    "branches": {
+      "total": 65,
+      "covered": 59,
+      "missed": 6,
+      "pct": "90.77 %"
+    },
+    "functions": {
+      "total": 27,
+      "covered": 26,
+      "missed": 1,
+      "pct": "96.30 %"
+    }
+  },
+  "files": {
+    "src/collections.js": {
+      "lines": {
+        "total": 19,
+        "covered": 16,
+        "missed": 3,
+        "pct": "84.21 %"
+      },
+      "branches": {
+        "total": 3,
+        "covered": 2,
+        "missed": 1,
+        "pct": "66.67 %"
+      },
+      "functions": {
+        "total": 3,
+        "covered": 3,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "uncoveredLines": "6-8",
+      "coveredLines": "1-5,9-19",
+      "lineHits": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 1,
+        "10": 3,
+        "11": 3,
+        "12": 3,
+        "13": 1,
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 4,
+        "18": 1,
+        "19": 1
+      },
+      "branchHits": [
         {
-          "line": 1,
-          "hit": 1
-        },
-        {
-          "line": 2,
-          "hit": 1
-        },
-        {
-          "line": 3,
-          "hit": 1
-        },
-        {
-          "line": 4,
-          "hit": 1
-        },
-        {
-          "line": 5,
-          "hit": 1
+          "line": 6,
+          "block": 0,
+          "branch": 0,
+          "hit": 0,
+          "taken": 0
         },
         {
           "line": 6,
-          "hit": 0
-        },
-        {
-          "line": 7,
-          "hit": 0
-        },
-        {
-          "line": 8,
-          "hit": 0
-        },
-        {
-          "line": 9,
-          "hit": 1
+          "block": 0,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 10,
-          "hit": 3
-        },
-        {
-          "line": 11,
-          "hit": 3
-        },
-        {
-          "line": 12,
-          "hit": 3
-        },
-        {
-          "line": 13,
-          "hit": 1
-        },
-        {
-          "line": 14,
-          "hit": 1
-        },
-        {
-          "line": 15,
-          "hit": 1
-        },
-        {
-          "line": 16,
-          "hit": 1
-        },
-        {
-          "line": 17,
-          "hit": 4
-        },
-        {
-          "line": 18,
-          "hit": 1
-        },
-        {
-          "line": 19,
-          "hit": 1
+          "block": 1,
+          "branch": 0,
+          "hit": 1,
+          "taken": 3
         }
-      ]
-    },
-    "functions": {
-      "hit": 3,
-      "found": 3,
-      "details": [
+      ],
+      "functionHits": [
         {
           "name": "unique",
           "line": 1,
@@ -103,312 +104,449 @@
         }
       ]
     },
-    "branches": {
-      "hit": 2,
-      "found": 3,
-      "details": [
+    "src/logic.js": {
+      "lines": {
+        "total": 67,
+        "covered": 67,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "branches": {
+        "total": 50,
+        "covered": 50,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "functions": {
+        "total": 12,
+        "covered": 12,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "uncoveredLines": "",
+      "coveredLines": "1-67",
+      "lineHits": {
+        "1": 1,
+        "2": 1,
+        "3": 4,
+        "4": 3,
+        "5": 4,
+        "6": 1,
+        "7": 4,
+        "8": 3,
+        "9": 4,
+        "10": 1,
+        "11": 4,
+        "12": 3,
+        "13": 4,
+        "14": 1,
+        "15": 3,
+        "16": 1,
+        "17": 3,
+        "18": 1,
+        "19": 4,
+        "20": 4,
+        "21": 1,
+        "22": 3,
+        "23": 1,
+        "24": 2,
+        "25": 1,
+        "26": 1,
+        "27": 4,
+        "28": 1,
+        "29": 3,
+        "30": 3,
+        "31": 2,
+        "32": 1,
+        "33": 2,
+        "34": 3,
+        "35": 3,
+        "36": 1,
+        "37": 3,
+        "38": 2,
+        "39": 3,
+        "40": 1,
+        "41": 2,
+        "42": 1,
+        "43": 2,
+        "44": 1,
+        "45": 2,
+        "46": 2,
+        "47": 1,
+        "48": 2,
+        "49": 1,
+        "50": 3,
+        "51": 3,
+        "52": 2,
+        "53": 3,
+        "54": 1,
+        "55": 2,
+        "56": 2,
+        "57": 1,
+        "58": 1,
+        "59": 1,
+        "60": 2,
+        "61": 2,
+        "62": 2,
+        "63": 2,
+        "64": 2,
+        "65": 1,
+        "66": 1,
+        "67": 1
+      },
+      "branchHits": [
         {
-          "line": 6,
+          "line": 4,
           "block": 0,
           "branch": 0,
-          "taken": 0
-        },
-        {
-          "line": 6,
-          "block": 0,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 10,
-          "block": 1,
-          "branch": 0,
+          "hit": 1,
           "taken": 3
-        }
-      ]
-    },
-    "title": "",
-    "file": "src/collections.js"
-  },
-  {
-    "lines": {
-      "found": 67,
-      "hit": 67,
-      "details": [
-        {
-          "line": 1,
-          "hit": 1
-        },
-        {
-          "line": 2,
-          "hit": 1
-        },
-        {
-          "line": 3,
-          "hit": 4
         },
         {
           "line": 4,
-          "hit": 3
+          "block": 0,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 5,
-          "hit": 4
+          "line": 4,
+          "block": 1,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 6,
-          "hit": 1
+          "line": 4,
+          "block": 1,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 7,
-          "hit": 4
+          "line": 4,
+          "block": 2,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
+        },
+        {
+          "line": 4,
+          "block": 2,
+          "branch": 1,
+          "hit": 1,
+          "taken": 3
         },
         {
           "line": 8,
-          "hit": 3
+          "block": 3,
+          "branch": 0,
+          "hit": 1,
+          "taken": 3
         },
         {
-          "line": 9,
-          "hit": 4
+          "line": 8,
+          "block": 3,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 10,
-          "hit": 1
+          "line": 8,
+          "block": 4,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 11,
-          "hit": 4
+          "line": 8,
+          "block": 4,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
+        },
+        {
+          "line": 8,
+          "block": 5,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
+        },
+        {
+          "line": 8,
+          "block": 5,
+          "branch": 1,
+          "hit": 1,
+          "taken": 3
         },
         {
           "line": 12,
-          "hit": 3
+          "block": 6,
+          "branch": 0,
+          "hit": 1,
+          "taken": 3
         },
         {
-          "line": 13,
-          "hit": 4
+          "line": 12,
+          "block": 6,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 14,
-          "hit": 1
+          "line": 12,
+          "block": 7,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 15,
-          "hit": 3
+          "line": 12,
+          "block": 7,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
         },
         {
           "line": 16,
-          "hit": 1
+          "block": 8,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 17,
-          "hit": 3
+          "line": 16,
+          "block": 8,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 18,
-          "hit": 1
+          "line": 16,
+          "block": 9,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 19,
-          "hit": 4
-        },
-        {
-          "line": 20,
-          "hit": 4
+          "line": 16,
+          "block": 9,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 21,
-          "hit": 1
+          "block": 10,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 22,
-          "hit": 3
+          "block": 10,
+          "branch": 1,
+          "hit": 1,
+          "taken": 3
         },
         {
           "line": 23,
-          "hit": 1
+          "block": 11,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 24,
-          "hit": 2
+          "block": 11,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
         },
         {
           "line": 25,
-          "hit": 1
+          "block": 12,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 26,
-          "hit": 1
-        },
-        {
-          "line": 27,
-          "hit": 4
-        },
-        {
-          "line": 28,
-          "hit": 1
-        },
-        {
-          "line": 29,
-          "hit": 3
-        },
-        {
-          "line": 30,
-          "hit": 3
+          "block": 12,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 31,
-          "hit": 2
+          "block": 13,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
+        },
+        {
+          "line": 31,
+          "block": 13,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
+        },
+        {
+          "line": 31,
+          "block": 14,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
+        },
+        {
+          "line": 31,
+          "block": 14,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 32,
-          "hit": 1
+          "block": 15,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
+        },
+        {
+          "line": 32,
+          "block": 15,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
+        },
+        {
+          "line": 32,
+          "block": 16,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
+        },
+        {
+          "line": 32,
+          "block": 16,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
         },
         {
           "line": 33,
-          "hit": 2
+          "block": 17,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 34,
-          "hit": 3
-        },
-        {
-          "line": 35,
-          "hit": 3
-        },
-        {
-          "line": 36,
-          "hit": 1
-        },
-        {
-          "line": 37,
-          "hit": 3
+          "line": 33,
+          "block": 17,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 38,
-          "hit": 2
+          "block": 18,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 39,
-          "hit": 3
+          "line": 38,
+          "block": 18,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 40,
-          "hit": 1
+          "line": 38,
+          "block": 19,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 41,
-          "hit": 2
+          "line": 38,
+          "block": 19,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
         },
         {
           "line": 42,
-          "hit": 1
+          "block": 20,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 43,
-          "hit": 2
-        },
-        {
-          "line": 44,
-          "hit": 1
-        },
-        {
-          "line": 45,
-          "hit": 2
-        },
-        {
-          "line": 46,
-          "hit": 2
+          "line": 42,
+          "block": 20,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 47,
-          "hit": 1
+          "block": 21,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 48,
-          "hit": 2
-        },
-        {
-          "line": 49,
-          "hit": 1
-        },
-        {
-          "line": 50,
-          "hit": 3
-        },
-        {
-          "line": 51,
-          "hit": 3
+          "line": 47,
+          "block": 21,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 52,
-          "hit": 2
+          "block": 22,
+          "branch": 0,
+          "hit": 1,
+          "taken": 2
         },
         {
-          "line": 53,
-          "hit": 3
-        },
-        {
-          "line": 54,
-          "hit": 1
-        },
-        {
-          "line": 55,
-          "hit": 2
-        },
-        {
-          "line": 56,
-          "hit": 2
+          "line": 52,
+          "block": 22,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 57,
-          "hit": 1
+          "block": 23,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 58,
-          "hit": 1
-        },
-        {
-          "line": 59,
-          "hit": 1
-        },
-        {
-          "line": 60,
-          "hit": 2
-        },
-        {
-          "line": 61,
-          "hit": 2
-        },
-        {
-          "line": 62,
-          "hit": 2
-        },
-        {
-          "line": 63,
-          "hit": 2
-        },
-        {
-          "line": 64,
-          "hit": 2
+          "line": 57,
+          "block": 23,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 65,
-          "hit": 1
+          "block": 24,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 66,
-          "hit": 1
-        },
-        {
-          "line": 67,
-          "hit": 1
+          "line": 65,
+          "block": 24,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         }
-      ]
-    },
-    "functions": {
-      "hit": 12,
-      "found": 12,
-      "details": [
+      ],
+      "functionHits": [
         {
           "name": "firstNonEmpty",
           "line": 3,
@@ -471,402 +609,65 @@
         }
       ]
     },
-    "branches": {
-      "hit": 50,
-      "found": 50,
-      "details": [
+    "src/math.js": {
+      "lines": {
+        "total": 19,
+        "covered": 19,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "branches": {
+        "total": 2,
+        "covered": 2,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "functions": {
+        "total": 4,
+        "covered": 4,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "uncoveredLines": "",
+      "coveredLines": "1-19",
+      "lineHits": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": 2,
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 2,
+        "19": 1
+      },
+      "branchHits": [
         {
-          "line": 4,
+          "line": 14,
           "block": 0,
           "branch": 0,
-          "taken": 3
-        },
-        {
-          "line": 4,
-          "block": 0,
-          "branch": 1,
+          "hit": 1,
           "taken": 1
-        },
-        {
-          "line": 4,
-          "block": 1,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 4,
-          "block": 1,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 4,
-          "block": 2,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 4,
-          "block": 2,
-          "branch": 1,
-          "taken": 3
-        },
-        {
-          "line": 8,
-          "block": 3,
-          "branch": 0,
-          "taken": 3
-        },
-        {
-          "line": 8,
-          "block": 3,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 8,
-          "block": 4,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 8,
-          "block": 4,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 8,
-          "block": 5,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 8,
-          "block": 5,
-          "branch": 1,
-          "taken": 3
-        },
-        {
-          "line": 12,
-          "block": 6,
-          "branch": 0,
-          "taken": 3
-        },
-        {
-          "line": 12,
-          "block": 6,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 12,
-          "block": 7,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 12,
-          "block": 7,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 16,
-          "block": 8,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 16,
-          "block": 8,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 16,
-          "block": 9,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 16,
-          "block": 9,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 21,
-          "block": 10,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 22,
-          "block": 10,
-          "branch": 1,
-          "taken": 3
-        },
-        {
-          "line": 23,
-          "block": 11,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 24,
-          "block": 11,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 25,
-          "block": 12,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 26,
-          "block": 12,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 31,
-          "block": 13,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 31,
-          "block": 13,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 31,
-          "block": 14,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 31,
-          "block": 14,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 32,
-          "block": 15,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 32,
-          "block": 15,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 32,
-          "block": 16,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 32,
-          "block": 16,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 33,
-          "block": 17,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 33,
-          "block": 17,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 38,
-          "block": 18,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 38,
-          "block": 18,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 38,
-          "block": 19,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 38,
-          "block": 19,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 42,
-          "block": 20,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 42,
-          "block": 20,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 47,
-          "block": 21,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 47,
-          "block": 21,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 52,
-          "block": 22,
-          "branch": 0,
-          "taken": 2
-        },
-        {
-          "line": 52,
-          "block": 22,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 57,
-          "block": 23,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 57,
-          "block": 23,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 65,
-          "block": 24,
-          "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 65,
-          "block": 24,
-          "branch": 1,
-          "taken": 1
-        }
-      ]
-    },
-    "title": "",
-    "file": "src/logic.js"
-  },
-  {
-    "lines": {
-      "found": 19,
-      "hit": 19,
-      "details": [
-        {
-          "line": 1,
-          "hit": 1
-        },
-        {
-          "line": 2,
-          "hit": 1
-        },
-        {
-          "line": 3,
-          "hit": 1
-        },
-        {
-          "line": 4,
-          "hit": 1
-        },
-        {
-          "line": 5,
-          "hit": 1
-        },
-        {
-          "line": 6,
-          "hit": 1
-        },
-        {
-          "line": 7,
-          "hit": 1
-        },
-        {
-          "line": 8,
-          "hit": 1
-        },
-        {
-          "line": 9,
-          "hit": 1
-        },
-        {
-          "line": 10,
-          "hit": 1
-        },
-        {
-          "line": 11,
-          "hit": 1
-        },
-        {
-          "line": 12,
-          "hit": 1
-        },
-        {
-          "line": 13,
-          "hit": 2
         },
         {
           "line": 14,
-          "hit": 1
-        },
-        {
-          "line": 15,
-          "hit": 1
-        },
-        {
-          "line": 16,
-          "hit": 1
-        },
-        {
-          "line": 17,
-          "hit": 1
-        },
-        {
-          "line": 18,
-          "hit": 2
-        },
-        {
-          "line": 19,
-          "hit": 1
+          "block": 0,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         }
-      ]
-    },
-    "functions": {
-      "hit": 4,
-      "found": 4,
-      "details": [
+      ],
+      "functionHits": [
         {
           "name": "add",
           "line": 1,
@@ -889,118 +690,122 @@
         }
       ]
     },
-    "branches": {
-      "hit": 2,
-      "found": 2,
-      "details": [
+    "src/partial.js": {
+      "lines": {
+        "total": 20,
+        "covered": 17,
+        "missed": 3,
+        "pct": "85.00 %"
+      },
+      "branches": {
+        "total": 10,
+        "covered": 5,
+        "missed": 5,
+        "pct": "50.00 %"
+      },
+      "functions": {
+        "total": 5,
+        "covered": 5,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "uncoveredLines": "2,6,14",
+      "coveredLines": "1,3-5,7-13,15-20",
+      "lineHits": {
+        "1": 1,
+        "2": 0,
+        "3": 1,
+        "4": 1,
+        "5": 2,
+        "6": 0,
+        "7": 2,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": 1,
+        "14": 0,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 1,
+        "20": 1
+      },
+      "branchHits": [
         {
-          "line": 14,
+          "line": 2,
           "block": 0,
           "branch": 0,
-          "taken": 1
-        },
-        {
-          "line": 14,
-          "block": 0,
-          "branch": 1,
-          "taken": 1
-        }
-      ]
-    },
-    "title": "",
-    "file": "src/math.js"
-  },
-  {
-    "lines": {
-      "found": 20,
-      "hit": 17,
-      "details": [
-        {
-          "line": 1,
-          "hit": 1
+          "hit": 0,
+          "taken": 0
         },
         {
           "line": 2,
-          "hit": 0
-        },
-        {
-          "line": 3,
-          "hit": 1
-        },
-        {
-          "line": 4,
-          "hit": 1
-        },
-        {
-          "line": 5,
-          "hit": 2
+          "block": 0,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
           "line": 6,
-          "hit": 0
+          "block": 1,
+          "branch": 0,
+          "hit": 0,
+          "taken": 0
         },
         {
-          "line": 7,
-          "hit": 2
-        },
-        {
-          "line": 8,
-          "hit": 1
-        },
-        {
-          "line": 9,
-          "hit": 1
-        },
-        {
-          "line": 10,
-          "hit": 1
-        },
-        {
-          "line": 11,
-          "hit": 1
-        },
-        {
-          "line": 12,
-          "hit": 1
-        },
-        {
-          "line": 13,
-          "hit": 1
+          "line": 6,
+          "block": 1,
+          "branch": 1,
+          "hit": 1,
+          "taken": 2
         },
         {
           "line": 14,
-          "hit": 0
+          "block": 2,
+          "branch": 0,
+          "hit": 0,
+          "taken": 0
         },
         {
-          "line": 15,
-          "hit": 1
+          "line": 14,
+          "block": 2,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 16,
-          "hit": 1
+          "line": 14,
+          "block": 3,
+          "branch": 0,
+          "hit": 0,
+          "taken": 0
         },
         {
-          "line": 17,
-          "hit": 1
+          "line": 14,
+          "block": 3,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         },
         {
-          "line": 18,
-          "hit": 1
+          "line": 14,
+          "block": 4,
+          "branch": 0,
+          "hit": 0,
+          "taken": 0
         },
         {
-          "line": 19,
-          "hit": 1
-        },
-        {
-          "line": 20,
-          "hit": 1
+          "line": 14,
+          "block": 4,
+          "branch": 1,
+          "hit": 1,
+          "taken": 1
         }
-      ]
-    },
-    "functions": {
-      "hit": 5,
-      "found": 5,
-      "details": [
+      ],
+      "functionHits": [
         {
           "name": "withFallback",
           "line": 1,
@@ -1028,154 +833,48 @@
         }
       ]
     },
-    "branches": {
-      "hit": 5,
-      "found": 10,
-      "details": [
-        {
-          "line": 2,
-          "block": 0,
-          "branch": 0,
-          "taken": 0
-        },
-        {
-          "line": 2,
-          "block": 0,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 6,
-          "block": 1,
-          "branch": 0,
-          "taken": 0
-        },
-        {
-          "line": 6,
-          "block": 1,
-          "branch": 1,
-          "taken": 2
-        },
-        {
-          "line": 14,
-          "block": 2,
-          "branch": 0,
-          "taken": 0
-        },
-        {
-          "line": 14,
-          "block": 2,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 14,
-          "block": 3,
-          "branch": 0,
-          "taken": 0
-        },
-        {
-          "line": 14,
-          "block": 3,
-          "branch": 1,
-          "taken": 1
-        },
-        {
-          "line": 14,
-          "block": 4,
-          "branch": 0,
-          "taken": 0
-        },
-        {
-          "line": 14,
-          "block": 4,
-          "branch": 1,
-          "taken": 1
-        }
-      ]
-    },
-    "title": "",
-    "file": "src/partial.js"
-  },
-  {
-    "lines": {
-      "found": 17,
-      "hit": 13,
-      "details": [
-        {
-          "line": 1,
-          "hit": 1
-        },
-        {
-          "line": 2,
-          "hit": 1
-        },
-        {
-          "line": 3,
-          "hit": 1
-        },
-        {
-          "line": 4,
-          "hit": 1
-        },
-        {
-          "line": 5,
-          "hit": 1
-        },
-        {
-          "line": 6,
-          "hit": 1
-        },
-        {
-          "line": 7,
-          "hit": 1
-        },
-        {
-          "line": 8,
-          "hit": 1
-        },
-        {
-          "line": 9,
-          "hit": 1
-        },
-        {
-          "line": 10,
-          "hit": 1
-        },
-        {
-          "line": 11,
-          "hit": 1
-        },
-        {
-          "line": 12,
-          "hit": 1
-        },
-        {
-          "line": 13,
-          "hit": 0
-        },
-        {
-          "line": 14,
-          "hit": 0
-        },
-        {
-          "line": 15,
-          "hit": 0
-        },
-        {
-          "line": 16,
-          "hit": 0
-        },
-        {
-          "line": 17,
-          "hit": 1
-        }
-      ]
-    },
-    "functions": {
-      "hit": 2,
-      "found": 3,
-      "details": [
+    "src/strings.js": {
+      "lines": {
+        "total": 17,
+        "covered": 13,
+        "missed": 4,
+        "pct": "76.47 %"
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "functions": {
+        "total": 3,
+        "covered": 2,
+        "missed": 1,
+        "pct": "66.67 %"
+      },
+      "uncoveredLines": "13-16",
+      "coveredLines": "1-12,17",
+      "lineHits": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 1
+      },
+      "branchHits": [],
+      "functionHits": [
         {
           "name": "capitalize",
           "line": 1,
@@ -1192,13 +891,6 @@
           "hit": 0
         }
       ]
-    },
-    "branches": {
-      "hit": 0,
-      "found": 0,
-      "details": []
-    },
-    "title": "",
-    "file": "src/strings.js"
+    }
   }
-]
+}

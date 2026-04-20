@@ -1,72 +1,79 @@
 {
-  "?xml": {
-    "@_version": "1.0",
-    "@_encoding": "UTF-8"
-  },
-  "coverage": {
-    "project": {
-      "metrics": {
-        "@_statements": "3",
-        "@_coveredstatements": "3",
-        "@_conditionals": "1",
-        "@_coveredconditionals": "1",
-        "@_methods": "1",
-        "@_coveredmethods": "1",
-        "@_elements": "5",
-        "@_coveredelements": "5",
-        "@_complexity": "0",
-        "@_loc": "3",
-        "@_ncloc": "3",
-        "@_packages": "1",
-        "@_files": "1",
-        "@_classes": "1"
-      },
-      "package": {
-        "metrics": {
-          "@_statements": "3",
-          "@_coveredstatements": "3",
-          "@_conditionals": "1",
-          "@_coveredconditionals": "1",
-          "@_methods": "1",
-          "@_coveredmethods": "1"
-        },
-        "file": {
-          "metrics": {
-            "@_statements": "3",
-            "@_coveredstatements": "3",
-            "@_conditionals": "1",
-            "@_coveredconditionals": "1",
-            "@_methods": "1",
-            "@_coveredmethods": "1"
-          },
-          "line": [
-            {
-              "@_num": "1",
-              "@_count": "1",
-              "@_type": "cond",
-              "@_truecount": "1",
-              "@_falsecount": "0"
-            },
-            {
-              "@_num": "2",
-              "@_count": "1",
-              "@_type": "stmt"
-            },
-            {
-              "@_num": "3",
-              "@_count": "1",
-              "@_type": "stmt"
-            }
-          ],
-          "@_name": "survivor.js",
-          "@_path": "src/survivor.js"
-        },
-        "@_name": "src"
-      },
-      "@_timestamp": "<timestamp>",
-      "@_name": "All files"
+  "reporter": "clover",
+  "totals": {
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "missed": 0,
+      "pct": "100.00 %"
     },
-    "@_generated": "<generated>",
-    "@_clover": "3.2.0"
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "missed": 0,
+      "pct": "100.00 %"
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "missed": 0,
+      "pct": "100.00 %"
+    },
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "missed": 0,
+      "pct": "100.00 %"
+    }
+  },
+  "files": {
+    "src/survivor.js": {
+      "statements": {
+        "total": 3,
+        "covered": 3,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "branches": {
+        "total": 1,
+        "covered": 1,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "lines": {
+        "total": 3,
+        "covered": 3,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "uncoveredLines": "",
+      "coveredLines": "1-3",
+      "lineHits": {
+        "1": 1,
+        "2": 1,
+        "3": 1
+      },
+      "branchHits": [
+        {
+          "line": 1,
+          "branch": 0,
+          "hit": 1,
+          "taken": 1
+        },
+        {
+          "line": 1,
+          "branch": 1,
+          "hit": 0,
+          "taken": 0
+        }
+      ],
+      "functionHits": []
+    }
   }
 }

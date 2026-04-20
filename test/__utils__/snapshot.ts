@@ -1,4 +1,4 @@
-import type { TestCase } from '../../src/@types/tests.ts';
+import type { CoverageSnapshot, TestCase } from '../../src/@types/tests.ts';
 import {
   existsSync,
   mkdirSync,
@@ -113,9 +113,18 @@ const matchTree = (
   strict.deepEqual(actual, expected, message);
 };
 
+const matchJson = (
+  actual: CoverageSnapshot,
+  target: TestCase,
+  message?: string
+): void => {
+  match(`${JSON.stringify(actual, null, 2)}\n`, target, message);
+};
+
 export const snapshot = {
   read,
   write,
   match,
+  matchJson,
   matchTree,
 } as const;

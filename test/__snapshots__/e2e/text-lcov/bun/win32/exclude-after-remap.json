@@ -1,30 +1,53 @@
-[
-  {
+{
+  "reporter": "text-lcov",
+  "totals": {
     "lines": {
-      "found": 2,
-      "hit": 2,
-      "details": [
-        {
-          "line": 1,
-          "hit": 15
-        },
-        {
-          "line": 2,
-          "hit": 23
-        }
-      ]
-    },
-    "functions": {
-      "hit": 1,
-      "found": 1,
-      "details": []
+      "total": 2,
+      "covered": 2,
+      "missed": 0,
+      "pct": "100.00 %"
     },
     "branches": {
-      "hit": 0,
-      "found": 0,
-      "details": []
+      "total": 0,
+      "covered": 0,
+      "missed": 0,
+      "pct": "100.00 %"
     },
-    "title": "",
-    "file": "src\\survivor.js"
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "missed": 0,
+      "pct": "100.00 %"
+    }
+  },
+  "files": {
+    "src\\survivor.js": {
+      "lines": {
+        "total": 2,
+        "covered": 2,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "missed": 0,
+        "pct": "100.00 %"
+      },
+      "uncoveredLines": "",
+      "coveredLines": "1-2",
+      "lineHits": {
+        "1": 15,
+        "2": 23
+      },
+      "branchHits": [],
+      "functionHits": []
+    }
   }
-]
+}
