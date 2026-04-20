@@ -80,12 +80,16 @@ Available:
 > - `v8`
 > - `json` (depends on `v8`)
 
+---
+
 ### › `include`
 
 - **Type:** `string[]`
 - **Default:** `[]`
 
 Glob patterns for files to include. When non-empty, only matching files appear in reports.
+
+---
 
 ### › `exclude`
 
@@ -94,12 +98,16 @@ Glob patterns for files to include. When non-empty, only matching files appear i
 
 Glob patterns for files to exclude. Replaces the default list when provided.
 
+---
+
 ### › `all`
 
 - **Type:** `boolean`
 - **Default:** `false`
 
 Walk the filesystem and report every source file under `cwd`, including those never touched by tests (reported as zero coverage).
+
+---
 
 ### › `checkCoverage`
 
@@ -108,12 +116,16 @@ Walk the filesystem and report every source file under `cwd`, including those ne
 
 Fail the run when coverage falls below configured percentages. Pass a bare number to apply to all metrics, or an object with per-metric values. Set `perFile: true` to enforce per-file.
 
+---
+
 ### › `skipFull`
 
 - **Type:** `boolean`
 - **Default:** `false`
 
 Hide fully-covered files (every non-null metric ≥ 100%) from the `text` reporter table. Totals are unaffected.
+
+---
 
 ### › `skipEmpty`
 
@@ -122,12 +134,16 @@ Hide fully-covered files (every non-null metric ≥ 100%) from the `text` report
 
 Hide files with no executable code from the `text` reporter table. Totals are unaffected.
 
+---
+
 ### › `watermarks`
 
 - **Type:** `Partial<Watermarks>`
 - **Default:** `[50, 80]` per metric
 
 `[lowMax, highMin]` thresholds for classifying percentages as `low` / `medium` / `high` in the `text` reporter.
+
+---
 
 ### › `hyperlinks`
 
@@ -137,8 +153,18 @@ Hide files with no executable code from the `text` reporter table. Totals are un
 Controls clickable file links in the `text` reporter.
 
 - `true`: plain `file://` links.
-- `'vscode'`, `'jetbrains'`, `'cursor'`, `'windsurf'`, `'vscode-insiders'`: emit IDE-specific URLs.
+- `<ide>`: emit IDE-specific URLs.
 - `false`: disabled.
+
+Available:
+
+- `'vscode'`
+- `'jetbrains'`
+- `'cursor'`
+- `'windsurf'`
+- `'vscode-insiders'`
+
+---
 
 ### › `reportsDirectory`
 
@@ -147,6 +173,8 @@ Controls clickable file links in the `text` reporter.
 
 Directory where report files are written. Resolved relative to the Poku working directory.
 
+---
+
 ### › `excludeAfterRemap`
 
 - **Type:** `boolean`
@@ -154,12 +182,16 @@ Directory where report files are written. Resolved relative to the Poku working 
 
 When `true`, globs match original source paths (post source-map remap). When `false`, globs match transpiled paths (pre-remap, mirrors c8).
 
+---
+
 ### › `tempDirectory`
 
 - **Type:** `string`
 - **Default:** auto
 
 Directory where raw coverage data is written. When omitted, a temp dir is created and cleaned up automatically.
+
+---
 
 ### › `clean`
 
@@ -171,6 +203,8 @@ Override temp-directory cleanup at teardown.
 - `undefined`: auto (clean only if auto-generated).
 - `true`: always clean.
 - `false`: never clean.
+
+---
 
 ### › `config`
 
