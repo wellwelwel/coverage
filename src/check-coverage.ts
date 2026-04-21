@@ -11,12 +11,12 @@ import { relative } from 'node:path';
 import process from 'node:process';
 import { lcovonly } from './reporters/lcovonly/index.js';
 import { colorForPct, colorize } from './reporters/shared/color.js';
+import { applyIstanbulBranches } from './reporters/shared/file-coverage.js';
 import {
   aggregateLines,
   aggregateMetric,
   pctValue,
 } from './reporters/shared/metrics.js';
-import { warnOnce } from './utils/warn-once.js';
 
 const DEFAULT_THRESHOLDS: CheckCoverageThresholds = {
   statements: 0,
@@ -87,13 +87,9 @@ const metricForName = (
   return aggregateMetric(files, (file) => file.functions);
 };
 
-const BUN_BRANCHES_WARNING =
-  '[@pokujs/coverage] check-coverage: skipping "branches" threshold on Bun (native LCOV output has no branch records). Configure other metrics or run on Node/Deno for branch enforcement.';
-
 const collectFailures = (
   files: CoverageModel,
-  thresholds: CheckCoverageThresholds,
-  runtime: ReporterContext['runtime']
+  thresholds: CheckCoverageThresholds
 ): CheckCoverageFailure[] => {
   const failures: CheckCoverageFailure[] = [];
 
@@ -110,13 +106,7 @@ const collectFailures = (
       const computed = metricForName(metric, entry.files);
       const actual = pctValue(computed);
 
-      if (actual === null) {
-        if (metric === 'branches' && runtime === 'bun') {
-          warnOnce('check-coverage-bun-branches', BUN_BRANCHES_WARNING);
-        }
-
-        continue;
-      }
+      if (actual === null) continue;
 
       if (actual < threshold)
         failures.push({ scope: entry.scope, metric, threshold, actual });
@@ -192,7 +182,13 @@ const run = (context: ReporterContext): void => {
   const model = lcovonly.parse(lcovOutput, context.cwd);
   if (model.length === 0) return;
 
-  const failures = collectFailures(model, thresholds, context.runtime);
+  applyIstanbulBranches(
+    model,
+    context.produceCoverageMap(),
+    context.produceBranchDiscoveries()
+  );
+
+  const failures = collectFailures(model, thresholds);
   if (failures.length === 0) return;
 
   printFailures(failures, context);
