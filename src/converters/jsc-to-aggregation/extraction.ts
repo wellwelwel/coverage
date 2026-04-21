@@ -201,8 +201,7 @@ const resolveBodyCount = (
 
   let bodyCount: number | undefined;
   let bestBodySpan = -1;
-  let nodeFallbackCount = 0;
-  let bestNodeDistance = Number.POSITIVE_INFINITY;
+  let maxExecutionCount = 0;
 
   for (const block of blocks) {
     if (block.startOffset < container.nodeStart) continue;
@@ -218,18 +217,13 @@ const resolveBodyCount = (
       bestBodySpan = span;
     }
 
-    const startDistance = block.startOffset - container.nodeStart;
-    const endDistance = container.nodeEnd - block.endOffset;
-    const distance = startDistance + endDistance;
-
-    if (distance < bestNodeDistance) {
-      bestNodeDistance = distance;
-      nodeFallbackCount = block.executionCount;
+    if (block.executionCount > maxExecutionCount) {
+      maxExecutionCount = block.executionCount;
     }
   }
 
-  if (bodyCount !== undefined) return bodyCount;
-  return nodeFallbackCount;
+  if (bodyCount !== undefined && bodyCount > 0) return bodyCount;
+  return maxExecutionCount;
 };
 
 const absorbBasicBlocks = (
