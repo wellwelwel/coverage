@@ -60,11 +60,12 @@ npm i -D poku @pokujs/coverage
 
 Available:
 
+- `'text'`
 - `'lcov'`
 - `'lcovonly'`
 - `'text-lcov'`
 - `'v8'`
-- `'text'`
+- `'jsc'`
 - `'text-summary'`
 - `'teamcity'`
 - `'json'`
@@ -75,10 +76,8 @@ Available:
 
 > [!NOTE]
 >
-> Reports not supported by **Bun** will generate `lcov` as a fallback:
->
-> - `v8`
-> - `json` (depends on `v8`)
+> - On **Bun**, `'v8'` falls back to `'jsc'`.
+> - On **Node.js** or **Deno**, `'jsc'` falls back to `'v8'`.
 
 ---
 
@@ -277,11 +276,28 @@ poku --coverage --coverageConfig=.coveragerc test/
 
 ---
 
+## Why Bun Users Should Care
+
+[**@pokujs/coverage**](https://github.com/pokujs/coverage) extends **Bun**'s coverage by tapping into the **JSC** **Inspector** directly, unlocking:
+
+- The full set of reporters (`html`, `html-spa`, `json`, `cobertura`, `clover`, etc.) that **Bun** does not provide on its own.
+- Consistent options across runtimes (`all`, `include`, `exclude`, `checkCoverage`, `skipFull`, `skipEmpty`, `watermarks`, etc.), so the same configuration produces equivalent reports on **Node.js**, **Deno**, and **Bun**.
+- Support for `/* jsc ignore */` directives (`next`, `start`/`stop`), aligned with **Node.js** and **Deno**.
+- Real function names with per-function execution counts.
+- Accurate line hit counts derived from basic blocks, instead of binary covered/uncovered.
+- A richer **LCOV** built from the **JSC** data, with function records and real per-line counts.
+
+> [!NOTE]
+>
+> Branch coverage is not yet available under **Bun**. [This is a limitation of the **JSC** **Inspector**](https://webkit.org/blog/3846/type-profiling-and-code-coverage-profiling-for-javascript/), which **Bun** depends on.
+
+---
+
 ## How It Works
 
 - 🐢 Under **Node.js**, the plugin sets `NODE_V8_COVERAGE` before **Poku** spawns tests. On teardown, the plugin reads the **V8** **JSON** files from `<tempDir>` and forwards the data.
 - 🦕 Under **Deno**, the plugin sets `DENO_COVERAGE_DIR` before **Poku** spawns tests. On teardown, the plugin shells out to `deno coverage <tempDir>` and forwards the data.
-- 🍞 Under **Bun**, the plugin appends `--coverage --coverage-reporter=lcov --coverage-dir=<tempDir>` to each test command. On teardown, the plugin reads the **LCOV** files **Bun** wrote and merges them.
+- 🍞 Under **Bun**, the plugin attaches to the **JSC** **Inspector** over WebSocket and captures basic-block execution counts via `Runtime.getBasicBlocks`. On teardown, the plugin reads the **JSON** files from `<tempDir>` and forwards the data.
 
 ---
 
