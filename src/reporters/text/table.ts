@@ -1,4 +1,3 @@
-import type { BranchArmPosition } from '../../@types/branch-discovery.js';
 import type { UrlBuilder } from '../../@types/ide.js';
 import type { Runtime } from '../../@types/reporters.js';
 import type {
@@ -7,7 +6,7 @@ import type {
   RenderCell,
   Row,
   RowMetrics,
-  UncoveredRange,
+  UncoveredEntry,
 } from '../../@types/text.js';
 import type { CoverageModel } from '../../@types/tree.js';
 import type { Watermarks } from '../../@types/watermarks.js';
@@ -24,8 +23,8 @@ import { shouldHideFileRow } from '../shared/skip.js';
 import {
   formatArmPosition,
   formatRange,
-  formatRanges,
-  truncateRanges,
+  formatUncoveredEntry,
+  truncateUncovered,
   TRUNCATION_SUFFIX,
 } from './ranges.js';
 import { buildTree, walkTree } from './tree.js';
@@ -92,14 +91,28 @@ const dataRow = (
 };
 
 const buildUncoveredDisplay = (
-  ranges: UncoveredRange[],
+  entries: UncoveredEntry[],
   absolutePath: string,
   urlBuilder: UrlBuilder,
   truncated: boolean
 ): string => {
-  const rendered = ranges
-    .map((range) =>
-      hyperlink(formatRange(range), absolutePath, range.start, 1, urlBuilder)
+  const rendered = entries
+    .map((entry) =>
+      entry.kind === 'range'
+        ? hyperlink(
+            formatRange(entry.range),
+            absolutePath,
+            entry.range.start,
+            1,
+            urlBuilder
+          )
+        : hyperlink(
+            formatArmPosition(entry.position),
+            absolutePath,
+            entry.position.line,
+            entry.position.column,
+            urlBuilder
+          )
     )
     .join(', ');
 
@@ -108,23 +121,6 @@ const buildUncoveredDisplay = (
     ? `${rendered}, ${TRUNCATION_SUFFIX}`
     : TRUNCATION_SUFFIX;
 };
-
-const buildUncoveredBranchDisplay = (
-  branchPositions: readonly BranchArmPosition[],
-  absolutePath: string,
-  urlBuilder: UrlBuilder
-): string =>
-  branchPositions
-    .map((position) =>
-      hyperlink(
-        formatArmPosition(position),
-        absolutePath,
-        position.line,
-        position.column,
-        urlBuilder
-      )
-    )
-    .join(', ');
 
 const averageColor = (
   resolvedWatermarks: Watermarks,
@@ -196,50 +192,29 @@ const buildRowCells = (
     ];
   }
 
-  const { visible: visibleRanges, truncated } = truncateRanges(
-    row.metrics.uncoveredRanges
-  );
+  const entries: UncoveredEntry[] = [
+    ...row.metrics.uncoveredRanges.map(
+      (range) => ({ kind: 'range', range }) as const
+    ),
+    ...row.metrics.uncoveredBranchPositions.map(
+      (position) => ({ kind: 'branch', position }) as const
+    ),
+  ];
 
-  const branchPositions = row.metrics.uncoveredBranchPositions;
+  const { visible, truncated } = truncateUncovered(entries);
 
-  const rangesBaseText = formatRanges(visibleRanges);
+  const baseText = visible.map(formatUncoveredEntry).join(', ');
 
-  const rangesWithTruncation = truncated
-    ? rangesBaseText.length > 0
-      ? `${rangesBaseText}, ${TRUNCATION_SUFFIX}`
+  const uncoveredText = truncated
+    ? baseText.length > 0
+      ? `${baseText}, ${TRUNCATION_SUFFIX}`
       : TRUNCATION_SUFFIX
-    : rangesBaseText;
+    : baseText;
 
-  const branchPositionsText = branchPositions.map(formatArmPosition).join(', ');
-
-  const combinedTextParts = [rangesWithTruncation, branchPositionsText].filter(
-    (part) => part.length > 0
-  );
-
-  const uncoveredText = combinedTextParts.join(', ');
-
-  let uncoveredDisplay: string | undefined;
-
-  if (urlBuilder && uncoveredText.length > 0 && row.absolutePath) {
-    const rangesDisplay = buildUncoveredDisplay(
-      visibleRanges,
-      row.absolutePath,
-      urlBuilder,
-      truncated
-    );
-
-    const branchDisplay = buildUncoveredBranchDisplay(
-      branchPositions,
-      row.absolutePath,
-      urlBuilder
-    );
-
-    const displayParts = [rangesDisplay, branchDisplay].filter(
-      (part) => part.length > 0
-    );
-
-    uncoveredDisplay = displayParts.join(', ');
-  }
+  const uncoveredDisplay =
+    urlBuilder && uncoveredText.length > 0 && row.absolutePath
+      ? buildUncoveredDisplay(visible, row.absolutePath, urlBuilder, truncated)
+      : undefined;
 
   const uncoveredCell: RenderCell = {
     text: uncoveredText,

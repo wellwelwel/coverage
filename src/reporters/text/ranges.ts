@@ -1,5 +1,9 @@
 import type { BranchArmPosition } from '../../@types/branch-discovery.js';
-import type { TruncatedRanges, UncoveredRange } from '../../@types/text.js';
+import type {
+  TruncatedUncovered,
+  UncoveredEntry,
+  UncoveredRange,
+} from '../../@types/text.js';
 
 const UNCOVERED_DISPLAY_BUDGET = 10;
 const RANGE_COST = 2;
@@ -7,16 +11,21 @@ const LINE_COST = 1;
 
 export const TRUNCATION_SUFFIX = '...';
 
-export const truncateRanges = (ranges: UncoveredRange[]): TruncatedRanges => {
-  const visible: UncoveredRange[] = [];
+export const truncateUncovered = (
+  entries: UncoveredEntry[]
+): TruncatedUncovered => {
+  const visible: UncoveredEntry[] = [];
 
   let remaining = UNCOVERED_DISPLAY_BUDGET;
 
-  for (const range of ranges) {
-    const cost = range.start === range.end ? LINE_COST : RANGE_COST;
+  for (const entry of entries) {
+    const cost =
+      entry.kind === 'range' && entry.range.start === entry.range.end
+        ? LINE_COST
+        : RANGE_COST;
     if (cost > remaining) return { visible, truncated: true };
 
-    visible.push(range);
+    visible.push(entry);
     remaining -= cost;
   }
 
@@ -64,11 +73,13 @@ export const collapseRanges = (lines: number[]): UncoveredRange[] => {
 export const formatRange = (range: UncoveredRange): string =>
   range.start === range.end ? `${range.start}` : `${range.start}-${range.end}`;
 
-export const formatRanges = (ranges: UncoveredRange[]): string =>
-  ranges.map(formatRange).join(', ');
-
 export const formatArmPosition = (position: BranchArmPosition): string => {
   if (position.endLine === position.line)
     return `${position.line}:${position.column}-${position.endColumn}`;
   return `${position.line}:${position.column}-${position.endLine}:${position.endColumn}`;
 };
+
+export const formatUncoveredEntry = (entry: UncoveredEntry): string =>
+  entry.kind === 'range'
+    ? formatRange(entry.range)
+    : formatArmPosition(entry.position);

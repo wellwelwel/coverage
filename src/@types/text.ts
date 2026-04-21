@@ -12,8 +12,12 @@ export type UncoveredRange = {
   end: number;
 };
 
-export type TruncatedRanges = {
-  visible: UncoveredRange[];
+export type UncoveredEntry =
+  | { kind: 'range'; range: UncoveredRange }
+  | { kind: 'branch'; position: BranchArmPosition };
+
+export type TruncatedUncovered = {
+  visible: UncoveredEntry[];
   truncated: boolean;
 };
 
