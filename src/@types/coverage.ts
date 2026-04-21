@@ -1,5 +1,5 @@
-import type { IdeName } from './ide.js';
-import type { ReporterName } from './reporters.js';
+import type { IDE } from './ide.js';
+import type { Reporter } from './reporters.js';
 import type { Watermarks } from './watermarks.js';
 
 export type CoverageState = {
@@ -57,7 +57,7 @@ export type CoverageOptions = {
    *
    * @default 'text'
    */
-  reporter?: ReporterName | ReporterName[];
+  reporter?: Reporter | Reporter[];
 
   /**
    * Clickable OSC 8 hyperlinks on uncovered line ranges (text reporter).
@@ -66,7 +66,7 @@ export type CoverageOptions = {
    *
    * @default true
    */
-  hyperlinks?: boolean | IdeName;
+  hyperlinks?: boolean | IDE;
 
   /**
    * `[lowMax, highMin]` thresholds per metric. Values `< lowMax` are

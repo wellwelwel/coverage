@@ -53,29 +53,29 @@ npm i -D poku @pokujs/coverage
 
 ## Options
 
-| Option                                       | Type                             | Default                                                                                                             | Node.js | Deno | Bun |
-| -------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------- | ---- | --- |
-| [**reporter**](#-reporter)                   | `ReporterName \| ReporterName[]` | `'text'`                                                                                                            | ●       | ●    | ●   |
-| [**include**](#-include)                     | `string[]`                       | `[]`                                                                                                                | ●       | ●    | ●   |
-| [**exclude**](#-exclude)                     | `string[]`                       | [list](https://github.com/pokujs/coverage/blob/8e13d606503308f019f455b3feca4998326e3ef5/src/file-filter.ts#L13-L27) | ●       | ●    | ●   |
-| [**all**](#-all)                             | `boolean`                        | `false`                                                                                                             | ●       | ●    | ●   |
-| [**src**](#-src)                             | `string \| string[]`             | `[cwd]`                                                                                                             | ●       | ●    | ●   |
-| [**extension**](#-extension)                 | `string \| string[]`             | [list](https://github.com/pokujs/coverage/blob/8e13d606503308f019f455b3feca4998326e3ef5/src/all-files.ts#L8-L17)    | ●       | ●    | ●   |
-| [**checkCoverage**](#-checkcoverage)         | `boolean \| number`              | `undefined`                                                                                                         | ●       | ●    | ●   |
-| [**statements**](#-statements)               | `number`                         | `0`                                                                                                                 | ●       | ●    | ●   |
-| [**branches**](#-branches)                   | `number`                         | `0`                                                                                                                 | ●       | ●    | ◯   |
-| [**functions**](#-functions)                 | `number`                         | `0`                                                                                                                 | ●       | ●    | ●   |
-| [**lines**](#-lines)                         | `number`                         | `0`                                                                                                                 | ●       | ●    | ●   |
-| [**perFile**](#-perfile)                     | `boolean`                        | `false`                                                                                                             | ●       | ●    | ●   |
-| [**skipFull**](#-skipfull)                   | `boolean`                        | `false`                                                                                                             | ●       | ●    | ●   |
-| [**skipEmpty**](#-skipempty)                 | `boolean`                        | `false`                                                                                                             | ●       | ●    | ●   |
-| [**watermarks**](#-watermarks)               | `Partial<Watermarks>`            | `[50, 80]` per metric                                                                                               | ●       | ●    | ●   |
-| [**hyperlinks**](#-hyperlinks)               | `boolean \| IdeName`             | `true`                                                                                                              | ●       | ●    | ●   |
-| [**reportsDirectory**](#-reportsdirectory)   | `string`                         | `'./coverage'`                                                                                                      | ●       | ●    | ●   |
-| [**excludeAfterRemap**](#-excludeafterremap) | `boolean`                        | `true`                                                                                                              | ●       | ●    | ◯   |
-| [**tempDirectory**](#-tempdirectory)         | `string`                         | _auto_                                                                                                              | ●       | ●    | ●   |
-| [**clean**](#-clean)                         | `boolean`                        | _auto_                                                                                                              | ●       | ●    | ●   |
-| [**config**](#-config)                       | `string \| false`                | `undefined`                                                                                                         | ●       | ●    | ●   |
+| Option                                       | Type                     | Default                                                                                                             | Node.js | Deno | Bun |
+| -------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------- | ---- | --- |
+| [**reporter**](#-reporter)                   | `Reporter \| Reporter[]` | `'text'`                                                                                                            | ●       | ●    | ●   |
+| [**include**](#-include)                     | `string[]`               | `[]`                                                                                                                | ●       | ●    | ●   |
+| [**exclude**](#-exclude)                     | `string[]`               | [list](https://github.com/pokujs/coverage/blob/8e13d606503308f019f455b3feca4998326e3ef5/src/file-filter.ts#L13-L27) | ●       | ●    | ●   |
+| [**all**](#-all)                             | `boolean`                | `false`                                                                                                             | ●       | ●    | ●   |
+| [**src**](#-src)                             | `string \| string[]`     | `[cwd]`                                                                                                             | ●       | ●    | ●   |
+| [**extension**](#-extension)                 | `string \| string[]`     | [list](https://github.com/pokujs/coverage/blob/8e13d606503308f019f455b3feca4998326e3ef5/src/all-files.ts#L8-L17)    | ●       | ●    | ●   |
+| [**checkCoverage**](#-checkcoverage)         | `boolean \| number`      | `undefined`                                                                                                         | ●       | ●    | ●   |
+| [**statements**](#-statements)               | `number`                 | `0`                                                                                                                 | ●       | ●    | ●   |
+| [**branches**](#-branches)                   | `number`                 | `0`                                                                                                                 | ●       | ●    | ◯   |
+| [**functions**](#-functions)                 | `number`                 | `0`                                                                                                                 | ●       | ●    | ●   |
+| [**lines**](#-lines)                         | `number`                 | `0`                                                                                                                 | ●       | ●    | ●   |
+| [**perFile**](#-perfile)                     | `boolean`                | `false`                                                                                                             | ●       | ●    | ●   |
+| [**skipFull**](#-skipfull)                   | `boolean`                | `false`                                                                                                             | ●       | ●    | ●   |
+| [**skipEmpty**](#-skipempty)                 | `boolean`                | `false`                                                                                                             | ●       | ●    | ●   |
+| [**watermarks**](#-watermarks)               | `Partial<Watermarks>`    | `[50, 80]`                                                                                                          | ●       | ●    | ●   |
+| [**hyperlinks**](#-hyperlinks)               | `boolean \| IDE`         | `true`                                                                                                              | ●       | ●    | ●   |
+| [**reportsDirectory**](#-reportsdirectory)   | `string`                 | `'./coverage'`                                                                                                      | ●       | ●    | ●   |
+| [**excludeAfterRemap**](#-excludeafterremap) | `boolean`                | `true`                                                                                                              | ●       | ●    | ◯   |
+| [**tempDirectory**](#-tempdirectory)         | `string`                 | _auto_                                                                                                              | ●       | ●    | ●   |
+| [**clean**](#-clean)                         | `boolean`                | _auto_                                                                                                              | ●       | ●    | ●   |
+| [**config**](#-config)                       | `string \| false`        | `undefined`                                                                                                         | ●       | ●    | ●   |
 
 > [!TIP]
 >
