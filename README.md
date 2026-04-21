@@ -5,11 +5,14 @@
 
 _**Stage: Experimental**_ 🧟
 
-Enjoying **Poku**? [Give him a star to show your support](https://github.com/wellwelwel/poku) ⭐
+Enjoying **Poku**? [Give him a star to show your support](https://github.com/pokujs/coverage) ⭐
 
----
-
-📚 [**Documentation**](https://poku.io/docs/documentation/helpers/coverage/coverage)
+![GitHub Workflow Status (Node.js)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_linux.yml?event=push&label=&branch=main&logo=nodedotjs&logoColor=535c68&color=badc58)
+![GitHub Workflow Status (Bun)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_linux.yml?event=push&label=&branch=main&logo=bun&logoColor=ffffff&color=f368e0)
+![GitHub Workflow Status (Deno)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_linux.yml?event=push&label=&branch=main&logo=deno&logoColor=ffffff&color=079992)  
+![GitHub Workflow Status (Linux)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_linux.yml?event=push&label=&branch=main&logo=ubuntu&logoColor=8897a9&color=dfe4ea)
+![GitHub Workflow Status (OSX)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_osx.yml?event=push&label=&branch=main&logo=apple&logoColor=8897a9&color=dfe4ea)
+![GitHub Workflow Status (Windows)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_windows.yml?event=push&label=&branch=main&logo=data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZT5XaW5kb3dzIDExPC90aXRsZT48cGF0aCBmaWxsPSIjODg5N2E5IiBkPSJNMTI2IDEuNjM3bC02NyA5LjgzNHY0OS44MzFsNjctLjUzNHpNMS42NDcgNjYuNzA5bC4wMDMgNDIuNDA0IDUwLjc5MSA2Ljk4My0uMDQtNDkuMDU3em01Ni44Mi42OGwuMDk0IDQ5LjQ2NSA2Ny4zNzYgOS41MDkuMDE2LTU4Ljg2M3pNMS42MSAxOS4yOTdsLjA0NyA0Mi4zODMgNTAuNzkxLS4yODktLjAyMy00OS4wMTZ6Ij48L3BhdGg+PC9zdmc+&color=dfe4ea)
 
 </div>
 
@@ -19,11 +22,14 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 > [!TIP]
 >
-> [**@pokujs/coverage**](https://github.com/pokujs/coverage) supports **JSONC**, **YAML**, and **TOML** config files out of the box. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
+> **@pokujs/coverage** supports **JSONC**, **YAML**, and **TOML** config files. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
 
-> [!IMPORTANT]
->
-> While **@pokujs/coverage** is in the experimental stage (`0.x.x`), **any release may introduce breaking changes**.
+---
+
+## Why
+
+- Move or combine an entire test suite between **Node.js**, **Deno**, and **Bun** with zero configuration changes, both in the tests and in the coverage.
+- Know exactly what is and isn't being tested on each runtime while using a single test suite.
 
 ---
 
@@ -63,7 +69,7 @@ npm i -D poku @pokujs/coverage
 | [**extension**](#-extension)                 | `string \| string[]`     | [list](https://github.com/pokujs/coverage/blob/8e13d606503308f019f455b3feca4998326e3ef5/src/all-files.ts#L8-L17)    | ●       | ●    | ●   |
 | [**checkCoverage**](#-checkcoverage)         | `boolean \| number`      | `undefined`                                                                                                         | ●       | ●    | ●   |
 | [**statements**](#-statements)               | `number`                 | `0`                                                                                                                 | ●       | ●    | ●   |
-| [**branches**](#-branches)                   | `number`                 | `0`                                                                                                                 | ●       | ●    | ◯   |
+| [**branches**](#-branches)                   | `number`                 | `0`                                                                                                                 | ●       | ●    | –   |
 | [**functions**](#-functions)                 | `number`                 | `0`                                                                                                                 | ●       | ●    | ●   |
 | [**lines**](#-lines)                         | `number`                 | `0`                                                                                                                 | ●       | ●    | ●   |
 | [**perFile**](#-perfile)                     | `boolean`                | `false`                                                                                                             | ●       | ●    | ●   |
@@ -72,14 +78,14 @@ npm i -D poku @pokujs/coverage
 | [**watermarks**](#-watermarks)               | `Partial<Watermarks>`    | `[50, 80]`                                                                                                          | ●       | ●    | ●   |
 | [**hyperlinks**](#-hyperlinks)               | `boolean \| IDE`         | `true`                                                                                                              | ●       | ●    | ●   |
 | [**reportsDirectory**](#-reportsdirectory)   | `string`                 | `'./coverage'`                                                                                                      | ●       | ●    | ●   |
-| [**excludeAfterRemap**](#-excludeafterremap) | `boolean`                | `true`                                                                                                              | ●       | ●    | ◯   |
+| [**excludeAfterRemap**](#-excludeafterremap) | `boolean`                | `true`                                                                                                              | ●       | ●    | –   |
 | [**tempDirectory**](#-tempdirectory)         | `string`                 | _auto_                                                                                                              | ●       | ●    | ●   |
 | [**clean**](#-clean)                         | `boolean`                | _auto_                                                                                                              | ●       | ●    | ●   |
 | [**config**](#-config)                       | `string \| false`        | `undefined`                                                                                                         | ●       | ●    | ●   |
 
 > [!TIP]
 >
-> `.nycrc` and `.c8rc` config files are supported and are auto automatically remapped, for example:
+> `.nycrc` and `.c8rc` config files are supported and are automatically remapped, for example:
 >
 > - `"check-coverage": true` → `"checkCoverage": true`
 > - `"100": true` → `checkCoverage: 100`
@@ -105,8 +111,8 @@ npm i -D poku @pokujs/coverage
 | `'cobertura'`    | ●       | ●    | ●   |
 | `'clover'`       | ●       | ●    | ●   |
 | `'none'`         | ●       | ●    | ●   |
-| `'v8'`           | ●       | ●    | ◯   |
-| `'jsc'`          | ◯       | ◯    | ●   |
+| `'v8'`           | ●       | ●    | –   |
+| `'jsc'`          | –       | –    | ●   |
 
 > [!NOTE]
 >
@@ -471,14 +477,6 @@ poku --coverage test/
   - [**Deno** supports only `text`, `lcov`, and `html`](https://docs.deno.com/runtime/reference/cli/coverage/).
 - Consistent options across runtimes (`all`, `checkCoverage`, `include`, `exclude`, `extension`, `skipFull`, `skipEmpty`, `watermarks`, etc.).
 - Compatibility with `.nycrc` / `.c8rc` config files, easing migration from existing coverage setups.
-
----
-
-## 🐢 Why Node.js Users Should Care
-
-- Move or combine an entire test suite between **Node.js**, **Deno**, and **Bun** with zero configuration changes, both in the tests and in the coverage.
-  - Know exactly what is and isn't being tested on each runtime while using a single test suite.
-  - Especially useful for maintainers of **JavaScript** libraries that want to guarantee cross-runtime compatibility without replicating the entire test suite for each runtime.
 
 ---
 

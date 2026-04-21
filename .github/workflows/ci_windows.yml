@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  windows:
+  node:
     runs-on: windows-latest
     timeout-minutes: 15
     strategy:

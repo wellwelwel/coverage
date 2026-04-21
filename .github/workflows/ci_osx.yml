@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  osx:
+  node:
     runs-on: macos-latest
     timeout-minutes: 10
     strategy:
