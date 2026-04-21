@@ -28,8 +28,9 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/pok
 
 ## Why
 
-- Move or combine an entire test suite between **Node.js**, **Deno**, and **Bun** with zero configuration changes, both in the tests and in the coverage.
-- Know exactly what is and isn't being tested on each runtime while using a single test suite.
+- Move and combine entire test suites between **Node.js**, **Deno**, and **Bun** with zero configuration changes.
+- Know exactly what is and isn't tested across each runtime using the same test suite.
+- Whether it's **CommonJS**, **ES Modules**, or **TypeScript**, just install and use it.
 
 ---
 
