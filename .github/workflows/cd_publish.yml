@@ -19,6 +19,29 @@ jobs:
     if: github.event.repository.fork == false
     name: Release Please
     steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          check-latest: true
+          node-version: lts/*
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: ➕ Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-linux-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-linux-
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🚀 Building
+        run: npm run build
+
       - name: 🤝 Release Please
         uses: google-github-actions/release-please-action@v3
         id: release
@@ -27,34 +50,6 @@ jobs:
           release-type: node
           package-name: '@pokujs/coverage'
           changelog-path: 'CHANGELOG.md'
-
-      - name: ➕ Actions - Checkout
-        uses: actions/checkout@v4
-        if: ${{ steps.release.outputs.releases_created }}
-
-      - name: ➕ Actions - Setup Node.js
-        uses: actions/setup-node@v6
-        if: ${{ steps.release.outputs.releases_created }}
-        with:
-          check-latest: true
-          node-version: lts/*
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: ➕ Cache dependencies
-        uses: actions/cache@v4
-        if: ${{ steps.release.outputs.releases_created }}
-        with:
-          path: ~/.npm
-          key: npm-linux-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-linux-
-
-      - name: 📦 Installing Dependencies
-        if: ${{ steps.release.outputs.releases_created }}
-        run: npm ci
-
-      - name: 🚀 Building
-        if: ${{ steps.release.outputs.releases_created }}
-        run: npm run build
 
       - name: 📥 Publishing Package
         if: ${{ steps.release.outputs.releases_created }}
