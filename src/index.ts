@@ -3,7 +3,7 @@ import type { CoverageOptions } from './@types/coverage.js';
 import type { Runtime } from './@types/reporters.js';
 import { isAbsolute, resolve } from 'node:path';
 import process from 'node:process';
-import { config } from './config.js';
+import { config } from './configs/index.js';
 import { bun } from './runtimes/bun.js';
 import { deno } from './runtimes/deno.js';
 import { node } from './runtimes/node.js';
