@@ -129,6 +129,27 @@ export default {
 
 ---
 
+### › `extension`
+
+- **Type:** `string | string[]`
+- **Default:** `['.js', '.cjs', '.mjs', '.ts', '.cts', '.mts', '.tsx', '.jsx']`
+
+File extensions considered by `all: true` discovery. Overrides the default list entirely. Has no effect without `all: true`.
+
+```js
+// poku.config.js
+export default {
+  plugins: [
+    coverage({
+      all: true,
+      extension: ['.ts', '.vue'],
+    }),
+  ],
+};
+```
+
+---
+
 ### › `checkCoverage`
 
 - **Type:** `number | CheckCoverageThresholds`

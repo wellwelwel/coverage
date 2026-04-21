@@ -145,4 +145,12 @@ export type CoverageOptions = {
    * @default [cwd]
    */
   src?: string | readonly string[];
+
+  /**
+   * File extensions considered by the `all: true` discovery. Overrides
+   * the default list entirely. Entries must include the leading dot.
+   *
+   * @default ['.js', '.cjs', '.mjs', '.ts', '.cts', '.mts', '.tsx', '.jsx']
+   */
+  extension?: string | readonly string[];
 };

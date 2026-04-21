@@ -5,11 +5,13 @@ import { isAbsolute, join, resolve } from 'node:path';
 import { fileFilter } from './file-filter.js';
 import { relativize, toPosix } from './utils/paths.js';
 
-const SOURCE_EXTENSIONS: readonly string[] = [
+const DEFAULT_SOURCE_EXTENSIONS: readonly string[] = [
   '.js',
   '.cjs',
   '.mjs',
   '.ts',
+  '.cts',
+  '.mts',
   '.tsx',
   '.jsx',
 ];
@@ -21,8 +23,11 @@ const PRUNED_DIRECTORY_NAMES: ReadonlySet<string> = new Set([
   '.svn',
 ]);
 
-const hasSourceExtension = (fileName: string): boolean => {
-  for (const extension of SOURCE_EXTENSIONS)
+const hasSourceExtension = (
+  fileName: string,
+  extensions: readonly string[]
+): boolean => {
+  for (const extension of extensions)
     if (fileName.endsWith(extension)) return true;
 
   return false;
@@ -31,6 +36,7 @@ const hasSourceExtension = (fileName: string): boolean => {
 const walkDirectory = (
   directoryPath: string,
   context: ReporterContext,
+  extensions: readonly string[],
   collected: Set<string>
 ): void => {
   let entries;
@@ -47,12 +53,18 @@ const walkDirectory = (
       if (PRUNED_DIRECTORY_NAMES.has(entryName)) continue;
       if (entryName.startsWith('.')) continue;
 
-      walkDirectory(join(directoryPath, entryName), context, collected);
+      walkDirectory(
+        join(directoryPath, entryName),
+        context,
+        extensions,
+        collected
+      );
+
       continue;
     }
 
     if (!entry.isFile()) continue;
-    if (!hasSourceExtension(entryName)) continue;
+    if (!hasSourceExtension(entryName, extensions)) continue;
 
     const absolutePath = join(directoryPath, entryName);
 
@@ -73,11 +85,19 @@ const resolveSrcRoots = (context: ReporterContext): readonly string[] => {
   );
 };
 
+const resolveExtensions = (context: ReporterContext): readonly string[] => {
+  const extension = context.options.extension;
+  if (extension === undefined) return DEFAULT_SOURCE_EXTENSIONS;
+
+  return typeof extension === 'string' ? [extension] : extension;
+};
+
 const discover = (context: ReporterContext): Set<string> => {
   const collected = new Set<string>();
+  const extensions = resolveExtensions(context);
 
   for (const root of resolveSrcRoots(context))
-    walkDirectory(root, context, collected);
+    walkDirectory(root, context, extensions, collected);
 
   return collected;
 };
