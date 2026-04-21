@@ -477,6 +477,8 @@ poku --coverage test/
 ## 🐢 Why Node.js Users Should Care
 
 - Move or combine an entire test suite between **Node.js**, **Deno**, and **Bun** with zero configuration changes, both in the tests and in the coverage.
+  - Know exactly what is and isn't being tested on each runtime while using a single test suite.
+  - Especially useful for maintainers of **JavaScript** libraries that want to guarantee cross-runtime compatibility without replicating the entire test suite for each runtime.
 
 ---
 
