@@ -30,7 +30,7 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/pok
 
 - Move and combine entire test suites between **Node.js**, **Deno**, and **Bun** with zero configuration changes.
 - Know exactly what is and isn't tested across each runtime using the same test suite.
-- Whether it's **CommonJS**, **ES Modules**, or **TypeScript**, just install and use it.
+- Whether it's **CommonJS**, **ES Modules**, **TypeScript**, or both, just install and use it.
 
 ---
 
@@ -39,7 +39,7 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/pok
 ### Install
 
 ```bash
-npm i -D poku @pokujs/coverage
+npm i -D @pokujs/coverage
 ```
 
 ### Usage
