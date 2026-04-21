@@ -22,7 +22,8 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/pok
 
 > [!TIP]
 >
-> **@pokujs/coverage** supports **JSONC**, **YAML**, and **TOML** config files. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
+> - **@pokujs/coverage** supports **JSONC**, **YAML**, and **TOML** config files. You can also use **JavaScript** and **TypeScript** by setting the options directly in the plugin.
+> - The default reporter is designed for easy consumption by **LLMs**, pinpointing uncovered code with precise locations.
 
 ---
 
