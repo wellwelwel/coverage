@@ -1,4 +1,3 @@
-import type { CheckCoverageInput } from './check-coverage.js';
 import type { IdeName } from './ide.js';
 import type { ReporterName } from './reporters.js';
 import type { Watermarks } from './watermarks.js';
@@ -78,13 +77,56 @@ export type CoverageOptions = {
   watermarks?: Partial<Watermarks>;
 
   /**
-   * Fail the run when coverage drops below the given percentages. Pass a
-   * bare number to apply to all four metrics, or an object with per-metric
-   * values and optional `perFile: true`.
+   * Fail the run when coverage drops below the configured thresholds.
+   *
+   * - `true`: enable with all thresholds at `0` (silent no-op unless
+   *   a per-metric root threshold is set).
+   * - `number`: default threshold applied to every metric; per-metric
+   *   root thresholds override.
+   * - `false` / `undefined`: disabled.
    *
    * @default undefined
    */
-  checkCoverage?: CheckCoverageInput;
+  checkCoverage?: boolean | number;
+
+  /**
+   * Minimum statements coverage percentage. Requires `checkCoverage` to
+   * be active.
+   *
+   * @default 0
+   */
+  statements?: number;
+
+  /**
+   * Minimum branches coverage percentage. Requires `checkCoverage` to be
+   * active.
+   *
+   * @default 0
+   */
+  branches?: number;
+
+  /**
+   * Minimum functions coverage percentage. Requires `checkCoverage` to
+   * be active.
+   *
+   * @default 0
+   */
+  functions?: number;
+
+  /**
+   * Minimum lines coverage percentage. Requires `checkCoverage` to be
+   * active.
+   *
+   * @default 0
+   */
+  lines?: number;
+
+  /**
+   * Enforce thresholds per file instead of on aggregated totals.
+   *
+   * @default false
+   */
+  perFile?: boolean;
 
   /**
    * Hide fully-covered files from the `text`, `html` and `html-spa`
