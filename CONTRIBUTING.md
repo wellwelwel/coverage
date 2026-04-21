@@ -56,16 +56,54 @@ The documentation is held within the main [**Poku**](https://github.com/wellwelw
 ### 👩🏻‍🏭 General
 
 ```sh
-npm test
+npm run build
+```
+
+Then:
+
+```sh
+npm test             # runs all tests for each runtime
+npm run test:node    # runs all tests for Node.js
+npm run test:deno    # runs all tests for Deno
+npm run test:bun     # runs all tests for Bun
 ```
 
 - Run the test suite.
 
----
+### Generating snapshots
 
-### 👔 Lint
+› **Locally**
 
 ```sh
+npm run build:snapshots
+```
+
+› **GitHub Actions**
+
+Enable the **Actions** for your fork, then dispatch:
+
+- **macOS:** [.github/workflows/build-snapshots-macos.yml](.github/workflows/build-snapshots-macos.yml)
+- **Linux:** [.github/workflows/build-snapshots-linux.yml](.github/workflows/build-snapshots-linux.yml)
+- **Windows:** [.github/workflows/build-snapshots-windows.yml](.github/workflows/build-snapshots-windows.yml)
+
+Then, download the `.zip` generated from each workflow, paste the `.zip` into the root workspace (`./`) and run:
+
+- **macOS:** `bash scripts/snapshots-darwin.sh`
+- **Linux:** `bash scripts/snapshots-linux.sh`
+- **Windows:** `bash scripts/snapshots-windows.sh`
+
+This will extract and overwrite all changed snapshots, then delete the related `.zip`.
+
+> [!TIP]
+>
+> You can set a custom branch when dispatching a workflow to generate the new snapshots. By default, **GitHub Actions** shows the `main` branch.
+
+---
+
+### 👔 Types & Lint
+
+```sh
+npm run typecheck
 npm run lint
 ```
 

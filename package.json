@@ -92,6 +92,14 @@
     "cobertura",
     "clover",
     "none",
-    "text"
+    "text",
+    "yaml",
+    "yml",
+    "toml",
+    "jsonc",
+    "nyc",
+    "c8",
+    "monocart-coverage-reports",
+    "one-double-zero"
   ]
 }

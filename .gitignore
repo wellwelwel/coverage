@@ -11,5 +11,5 @@
 /test/__fixtures__/e2e/**/test/
 
 node_modules/
-playground/coverage
 playground/
+playground-ts/
