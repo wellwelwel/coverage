@@ -5,7 +5,7 @@
 
 _**Stage: Experimental**_ 🧟
 
-Enjoying **Poku**? [Give him a star to show your support](https://github.com/pokujs/coverage) ⭐
+Enjoying **Poku**? [Give him a star to show your support](https://github.com/wellwelwel/poku) ⭐
 
 ![GitHub Workflow Status (Node.js)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_linux.yml?event=push&label=&branch=main&logo=nodedotjs&logoColor=535c68&color=badc58)
 ![GitHub Workflow Status (Bun)](https://img.shields.io/github/actions/workflow/status/pokujs/coverage/ci_linux.yml?event=push&label=&branch=main&logo=bun&logoColor=ffffff&color=f368e0)
