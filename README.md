@@ -108,6 +108,27 @@ Walk the filesystem and report every source file under `cwd`, including those ne
 
 ---
 
+### › `src`
+
+- **Type:** `string | string[]`
+- **Default:** `[cwd]`
+
+Root directories searched when `all: true`. Overrides `cwd` as the default walk root. Useful for monorepos. Relative paths are resolved against `cwd`. Has no effect without `all: true`.
+
+```js
+// poku.config.js
+export default {
+  plugins: [
+    coverage({
+      all: true,
+      src: ['./packages/core/src', './packages/api/src'],
+    }),
+  ],
+};
+```
+
+---
+
 ### › `checkCoverage`
 
 - **Type:** `number | CheckCoverageThresholds`

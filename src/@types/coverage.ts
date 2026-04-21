@@ -136,4 +136,13 @@ export type CoverageOptions = {
    * @default false
    */
   all?: boolean;
+
+  /**
+   * Root directories searched when `all: true`. Overrides `cwd` as the
+   * default walk root. Useful for monorepos. Relative paths are resolved
+   * against `cwd`.
+   *
+   * @default [cwd]
+   */
+  src?: string | readonly string[];
 };

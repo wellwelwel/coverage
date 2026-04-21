@@ -63,9 +63,22 @@ const walkDirectory = (
   }
 };
 
+const resolveSrcRoots = (context: ReporterContext): readonly string[] => {
+  const src = context.options.src;
+  if (src === undefined) return [context.cwd];
+
+  const list = typeof src === 'string' ? [src] : src;
+  return list.map((root) =>
+    isAbsolute(root) ? root : resolve(context.cwd, root)
+  );
+};
+
 const discover = (context: ReporterContext): Set<string> => {
   const collected = new Set<string>();
-  walkDirectory(context.cwd, context, collected);
+
+  for (const root of resolveSrcRoots(context))
+    walkDirectory(root, context, collected);
+
   return collected;
 };
 
