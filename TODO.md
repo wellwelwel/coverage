@@ -6,18 +6,7 @@
 
 ### Bun
 
-1. Support remapped `bunfig.toml`:
-
-```toml
-[test]
-coverageDir = "coverage-reports"  # default "coverage"
-coverageReporter = ["text", "lcov"]
-coveragePathIgnorePatterns = [ # Exclude large directories you don't need coverage for
-  "node_modules/**",
-  "vendor/**",
-  "generated/**"
-]
-```
+- ✨
 
 ---
 
@@ -42,4 +31,42 @@ if (condition) {
   console.log('both the branch and lines are ignored');
 }
 // deno-coverage-ignore-stop
+```
+
+### General
+
+**1)** Allow isolating configurations between runtimes, for example:
+
+- `bunfig.toml` applies settings only for Bun.
+- All others that mirror `.c8rc`, `.nycrc`, and `.coveragerc` remain global.
+
+Configuration example:
+
+```jsonc
+{
+  "isolate": {
+    "configs": true, // default: false
+  },
+}
+```
+
+**2)** Allow isolating behaviors between different runtimes, for example:
+
+> - Blocked until finishing the Deno TODO.
+> - Complex.
+
+- "jsc" directive ignores only for Bun
+- Deno native directives ignore only for Deno
+- "v8" directive ignores only for Deno and Node.js
+- "coverage" directive ignores for all?
+- Should there be an autonomous way to ignore by runtime? Example: `deno-coverage-ignore`, `node-coverage-ignore`, `bun-coverage-ignore`.
+
+Configuration example:
+
+```jsonc
+{
+  "isolate": {
+    "specialComments": true, // default: false
+  },
+}
 ```

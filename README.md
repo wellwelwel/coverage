@@ -84,13 +84,9 @@ npm i -D @pokujs/coverage
 | [**tempDirectory**](#-tempdirectory)         | `string`                 | _auto_                                                                                                              | ●       | ●    | ●   |
 | [**clean**](#-clean)                         | `boolean`                | _auto_                                                                                                              | ●       | ●    | ●   |
 | [**config**](#-config)                       | `string \| false`        | `undefined`                                                                                                         | ●       | ●    | ●   |
+| [**requireFlag**](#require---coverage-flag)  | `boolean`                | `false`                                                                                                             | ●       | ●    | ●   |
 
-> [!TIP]
->
-> `.nycrc` and `.c8rc` config files are supported and are automatically remapped, for example:
->
-> - `"check-coverage": true` → `"checkCoverage": true`
-> - `"100": true` → `checkCoverage: 100`
+`.nycrc`, `.c8rc`, and `bunfig.toml` config files are supported and options are automatically remapped.
 
 > [!NOTE]
 >
@@ -212,7 +208,7 @@ Above: `statements`, `functions`, and `lines` require `95`; `branches` requires 
 
 #### › statements
 
-Minimum statements coverage percentage. Requires `checkCoverage` to be active.
+Minimum statements coverage percentage.
 
 ```json
 {
@@ -225,7 +221,7 @@ Minimum statements coverage percentage. Requires `checkCoverage` to be active.
 
 #### › branches
 
-Minimum branches coverage percentage. Requires `checkCoverage` to be active.
+Minimum branches coverage percentage.
 
 ```json
 {
@@ -238,7 +234,7 @@ Minimum branches coverage percentage. Requires `checkCoverage` to be active.
 
 #### › functions
 
-Minimum functions coverage percentage. Requires `checkCoverage` to be active.
+Minimum functions coverage percentage.
 
 ```json
 {
@@ -251,7 +247,7 @@ Minimum functions coverage percentage. Requires `checkCoverage` to be active.
 
 #### › lines
 
-Minimum lines coverage percentage. Requires `checkCoverage` to be active.
+Minimum lines coverage percentage.
 
 ```json
 {
@@ -413,8 +409,9 @@ poku --coverage --coverageConfig=.coveragerc test/
 > When no `config` is specified, the plugin automatically searches for the following files in the working directory (in order):
 >
 > - `.coveragerc`, `.coveragerc.json`, `.coveragerc.jsonc`, `.coveragerc.toml`, `.coveragerc.yaml`, `.coveragerc.yml`
-> - `.nycrc`, `.nycrc.json`, `.nycrc.jsonc`, `.nycrc.toml`, `.nycrc.yaml`, `.nycrc.yml`
-> - `.c8rc`, `.c8rc.json`, `.c8rc.jsonc`, `.c8rc.toml`, `.c8rc.yaml`, `.c8rc.yml`
+> - `.nycrc`, `.nycrc.json`
+> - `.c8rc`, `.c8rc.json`
+> - `bunfig.toml`
 
 ---
 

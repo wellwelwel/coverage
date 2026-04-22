@@ -1,7 +1,9 @@
 import type { CoverageOptions } from '../@types/coverage.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { bunfig } from './bunfig.js';
 import { configNormalize } from './normalize.js';
+import { nycrc } from './nycrc.js';
 import { configParse } from './parse.js';
 
 const load = (cwd: string, customPath?: string | false): CoverageOptions => {
@@ -18,16 +20,9 @@ const load = (cwd: string, customPath?: string | false): CoverageOptions => {
         '.coveragerc.yml',
         '.nycrc',
         '.nycrc.json',
-        '.nycrc.jsonc',
-        '.nycrc.toml',
-        '.nycrc.yaml',
-        '.nycrc.yml',
         '.c8rc',
         '.c8rc.json',
-        '.c8rc.jsonc',
-        '.c8rc.toml',
-        '.c8rc.yaml',
-        '.c8rc.yml',
+        'bunfig.toml',
       ];
 
   for (const file of expectedFiles) {
@@ -43,7 +38,15 @@ const load = (cwd: string, customPath?: string | false): CoverageOptions => {
       continue;
     }
 
-    return configNormalize.normalize(configParse.parse(content, file));
+    const parsed = configParse.parse(content, file);
+    const remapped: CoverageOptions =
+      file === 'bunfig.toml'
+        ? bunfig.extract(parsed)
+        : file.startsWith('.nycrc') || file.startsWith('.c8rc')
+          ? nycrc.extract(parsed)
+          : parsed;
+
+    return configNormalize.normalize(remapped);
   }
 
   return Object.create(null);
