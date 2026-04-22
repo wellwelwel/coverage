@@ -38,6 +38,9 @@ jobs:
       - name: 📦 Installing Dependencies
         run: npm ci
 
+      - name: 🚀 Building
+        run: npm run build
+
       - name: 🧪 Testing
         shell: pwsh
         run: npm run test:node *>&1 | Tee-Object -FilePath test-output.log
@@ -79,13 +82,26 @@ jobs:
       - name: 📦 Installing Dependencies
         run: npm ci
 
+      - name: 🚀 Building
+        run: npm run build
+
+      - name: 🗑️ Uninstalling Node.js
+        shell: pwsh
+        run: |
+          foreach ($name in @('node','npm','npx','corepack')) {
+            Get-Command $name -All -ErrorAction SilentlyContinue | ForEach-Object {
+              Remove-Item $_.Source -Force -ErrorAction SilentlyContinue
+            }
+          }
+          if (Get-Command node -ErrorAction SilentlyContinue) { exit 1 }
+
       - name: 🧪 Testing
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 10
           max_attempts: 2
           shell: pwsh
-          command: npm run test:bun *>&1 | Tee-Object -FilePath test-output.log
+          command: bun run test:bun *>&1 | Tee-Object -FilePath test-output.log
 
       - name: 📤 Upload test output
         if: always()
@@ -124,9 +140,22 @@ jobs:
       - name: 📦 Installing Dependencies
         run: npm ci
 
+      - name: 🚀 Building
+        run: npm run build
+
+      - name: 🗑️ Uninstalling Node.js
+        shell: pwsh
+        run: |
+          foreach ($name in @('node','npm','npx','corepack')) {
+            Get-Command $name -All -ErrorAction SilentlyContinue | ForEach-Object {
+              Remove-Item $_.Source -Force -ErrorAction SilentlyContinue
+            }
+          }
+          if (Get-Command node -ErrorAction SilentlyContinue) { exit 1 }
+
       - name: 🧪 Testing
         shell: pwsh
-        run: npm run test:deno *>&1 | Tee-Object -FilePath test-output.log
+        run: deno task test:deno *>&1 | Tee-Object -FilePath test-output.log
 
       - name: 📤 Upload test output
         if: always()

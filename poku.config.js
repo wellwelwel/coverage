@@ -83,13 +83,19 @@ const denoCacheDir = () => {
 
 const clearRuntimeCaches = async () => {
   console.log('› Clearing Deno cache for snapshot regeneration...');
-  await rm(denoCacheDir(), { recursive: true, force: true });
+
+  try {
+    await rm(denoCacheDir(), { recursive: true, force: true });
+  } catch {}
 };
 
 export default defineConfig({
   include: ['test/e2e'],
   reporter: 'compact',
   timeout: 30000,
+  deno: {
+    allow: ['all'],
+  },
   plugins: [
     {
       setup: async () => {
