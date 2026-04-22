@@ -112,16 +112,14 @@ npm i -D @pokujs/coverage
 | `'v8'`           | ●       | ●    | –   |
 | `'jsc'`          | –       | –    | ●   |
 
+```json
+{ "reporter": ["text", "lcov"] }
+```
+
 > [!NOTE]
 >
 > - On **Bun**, `'v8'` falls back to `'jsc'`.
 > - On **Node.js** or **Deno**, `'jsc'` falls back to `'v8'`.
-
-```json
-{
-  "reporter": ["text", "lcov"]
-}
-```
 
 ---
 
