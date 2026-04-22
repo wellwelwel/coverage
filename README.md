@@ -442,6 +442,7 @@ poku --coverage test/
 - Real function names with per-function execution counts.
 - Accurate line hit counts derived from basic blocks, instead of binary covered/uncovered.
 - A richer **LCOV** built from the **JSC** data, with function records and real per-line counts.
+- Compatibility with `.nycrc` / `.c8rc` config files, easing migration from existing coverage setups.
 
 > [!NOTE]
 >
