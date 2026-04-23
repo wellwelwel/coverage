@@ -2,9 +2,11 @@
 
 The first code coverage package that targets Node.js (V8), Bun (JSC), and Deno (V8) simultaneously. Exclusive plugin for Poku, the only test runner that executes the same test suite natively on the three runtimes.
 
-> Note to the agent: this document is living. If you complete a plan that changes the project structure (e.g., extract a shared module, introduce a new group/pattern), update the rules and examples below in the same commit. Do not let this document drift from repository reality.
+> Notes to the agent:
 >
-> - Always ask before changing this document.
+> - When an implementation goes wrong, avoid fixing progressively on top of errors, eliminate the error and implement the right approach in a clean and concise way.
+> - This document is living. If you complete a plan that changes the project structure (e.g., extract a shared module, introduce a new group/pattern), update the rules and examples below in the same commit. Do not let this document drift from repository reality.
+>   - Always ask before changing this document.
 
 ---
 
@@ -97,14 +99,14 @@ End-to-end tests live under [test/](test/). Open the directory to see the curren
 
 ```sh
 npm run typecheck
-npm test             # runs all tests for each runtime
+npm test               # runs all tests for each runtime
 ```
 
 ```sh
 npm run build
-npm run test:node    # runs all tests for Node.js
-npm run test:deno    # runs all tests for Deno
-npm run test:bun     # runs all tests for Bun
+npm run test:node      # runs all tests for Node.js
+bun run test:bun       # runs all tests for Bun
+deno task test:deno    # runs all tests for Deno
 ```
 
 Always ask before regenerating snapshots after a deliberate change to a reporter's output.
